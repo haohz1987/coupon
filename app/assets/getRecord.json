@@ -1,0 +1,70 @@
+﻿{
+   "respCode": "0000",
+    "respMsg": "请求成功",
+	"logo":"http://api.map.baidu.com/images/weather/day/duoyun.png", 
+	"mechantName":"商户01",
+	"mechantCode":"0123456789",		
+    "result": {
+		"cancelRecord":{
+			"recordType":1,
+			"recordCount":2,
+			"recordList":[
+				{
+                    "recordDate": "201712181033",
+                    "coupType": 1,
+                    "serialNo": "123456789",
+                    "coupNo": "12345678922",					
+                    "orderAmount": 53.23,
+                    "coupAmount": 10.00,
+                    "discount": "",
+                    "consumeLite": 100.00,
+                    "usedCount": 5,					
+                    "usedLimit": 1                   
+                }, 
+                {
+                    "recordDate": "201712181033",
+                    "coupType": 1,
+                    "serialNo": "123456789",
+                    "coupNo": "12345678922",					
+                    "orderAmount": 53.23,
+                    "coupAmount": 0,
+                    "discount": "8折",
+                    "consumeLite": 100.00,
+                    "usedCount": 5,					
+                    "usedLimit": 1  
+                }
+			]
+		},
+		"provideRecord":{
+			"recordType":2,
+			"recordCount":2,
+			"recordList":[
+				{
+                    "recordDate": "201712181033",
+                    "coupType": 1,
+                    "serialNo": "123456789",
+                    "coupNo": "12345678922",					
+                    "orderAmount": 53.23,
+                    "coupAmount": 10.00,
+                    "discount": "",
+                    "consumeLite": 100.00,
+                    "usedCount": 5,					
+                    "usedLimit": 1                   
+                }, 
+                {
+                    "recordDate": "201712181033",
+                    "coupType": 1,
+                    "serialNo": "123456789",
+                    "coupNo": "12345678922",					
+                    "orderAmount": 53.23,
+                    "coupAmount": 0,
+                    "discount": "8折",
+                    "consumeLite": 100.00,
+                    "usedCount": 5,					
+                    "usedLimit": 1  
+                }
+			]
+		}		
+	}	
+}
+

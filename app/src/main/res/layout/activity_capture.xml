@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:id="@+id/capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/capture_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <View
+                android:id="@+id/capture_mask_top"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:background="#80c4c1c1"/>
+
+            <View
+                android:id="@+id/capture_mask_left"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:layout_above="@+id/ll_tv_desc"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/capture_mask_top"
+                android:layout_toLeftOf="@+id/capture_crop_view"
+                android:background="#80c4c1c1"/>
+
+            <ImageView
+                android:id="@+id/capture_mask_right"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:layout_above="@+id/ll_tv_desc"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/capture_mask_top"
+                android:layout_toRightOf="@+id/capture_crop_view"
+                android:background="#80c4c1c1"/>
+
+            <RelativeLayout
+                android:id="@+id/capture_crop_view"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_below="@+id/capture_mask_top"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/qr_code_bg">
+
+                <ImageView
+                    android:id="@+id/capture_scan_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/scan_line"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/capture_crop_view"
+                android:background="#80c4c1c1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_paycount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:id="@+id/txt_webpay_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_paycount"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:textColor="#2BE92B"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/ll_tv_desc"
+                android:layout_centerHorizontal="true"
+                android:background="#80c4c1c1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/btn_opean_merchant"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="45dp"
+                    android:src="@mipmap/saomahover"
+                    />
+
+                <ImageView
+                    android:id="@+id/btn_opean_merchant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="45dp"
+                    android:src="@mipmap/shoukuan_scanner"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

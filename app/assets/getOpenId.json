@@ -1,0 +1,43 @@
+﻿{
+    "respCode": "0000",
+    "respMsg": "请求成功",
+	"logo":"http://api.map.baidu.com/images/weather/day/duoyun.png", 
+	"mechantName":"商户01",
+	"mechantCode":"0123456789",
+	"couponType":2,
+	"cardAccount":2,
+	"cardTotal":5,
+	"validRepertoryTerm":"30",	
+    "result": [
+        {
+			"merchantId":"123456789",
+            "mechantType": 1,
+			"cardColor": 1,
+          	"title":"梨花小店会员卡1",
+			"couponAmount":"9折",
+			"explain":"到店请出示优惠券",
+			"usedPerson":10,
+			"usedCount":2,
+			"validPeriod":"20171220112233",
+			"startDay":"",
+			"endDay":"",
+			"qrCode":"https://qr.api.cli.im/qr?data=%25E5%25BE%25AE%25E4%25BF%25A1&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=9c0c47f10f90fa1e73c7f86dcc151ac9"
+
+        },
+        {
+            "merchantId":"123456780",                       
+            "mechantType": 1,
+			"cardColor": 1,
+          	"title":"梨花小店会员卡2",
+			"couponAmount":"9折",
+			"explain":"到店请出示优惠券",
+			"usedPerson":10,
+			"usedCount":2,
+			"validPeriod":"",
+			"startDay":"20171220112233",
+			"endDay":"20180120112233",
+			"qrCode":"https://qr.api.cli.im/qr?data=%25E5%25BE%25AE%25E4%25BF%25A1&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=9c0c47f10f90fa1e73c7f86dcc151ac9"
+        }
+    ]
+}
+

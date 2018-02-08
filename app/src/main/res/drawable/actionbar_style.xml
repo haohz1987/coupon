@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+ 	<!-- endColor圆角矩形 上部门的颜色
+ 		 startColor 圆角矩形下部门的颜色
+ 		 透明 #00000000
+ 		  -->
+    <gradient
+        android:angle="90"
+        android:endColor="@color/login_blue_nomal_top" 
+        android:startColor="@color/login_blue_nomal_buttom" />
+ 
+    <corners
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="0dp"
+        android:topRightRadius="0dp" />
+ 
+    <stroke
+        android:width="0dip"
+        android:color="#00000000" />
+   
+ 
+</shape>

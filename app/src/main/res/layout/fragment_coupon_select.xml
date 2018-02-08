@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/paymentAmount_ok_color"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <!--android:background="@drawable/rf_moneybg"-->
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="订单金额  ￥"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_order_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@null"
+                    android:digits="1234567890."
+                    android:gravity="center_vertical|right"
+                    android:hint="0.00"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="不参与优惠的金额  ￥"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_preferential_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@null"
+                    android:digits="1234567890."
+                    android:gravity="center_vertical|right"
+                    android:hint="0.00"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="可选两种优惠方式：扫码优惠、线下优惠"
+                    android:textColor="@color/grey_color"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!--新的UI修改 start -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="horizontal">
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp">
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum1"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg1" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum2"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg2" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum3"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg3" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp">
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum4"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg4" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum5"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg5" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum6"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg6" />
+
+                        </TableRow>
+                    </TableLayout>
+
+                    <Button
+                        android:id="@+id/rf_wechat_btn"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_number_okbg2" />
+                </LinearLayout>
+                <!--新的UI修改 end -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="horizontal">
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp">
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum7"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg7" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum8"
+                                android:layout_width="80dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/btn_numberbg8" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum9"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_numberbg9" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp">
+
+                            <Button
+                                android:id="@+id/rf_hpKbNum0"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:width="0dp"
+                                android:background="@drawable/btn_numberbg0" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbDot"
+                                android:layout_width="80dp"
+                                android:layout_height="match_parent"
+                                android:width="0dp"
+                                android:background="@drawable/btn_numberbg_dot" />
+
+                            <Button
+                                android:id="@+id/rf_hpKbCancle"
+                                android:layout_width="80dp"
+                                android:layout_height="match_parent"
+                                android:width="0dp"
+                                android:background="@drawable/btn_number_delbg" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <Button
+                        android:id="@+id/rf_hpKbOk"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_number_okbg" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

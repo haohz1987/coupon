@@ -1,0 +1,57 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/search_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/new_indexbg_green"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:weightSum="14">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_4"
+            android:background="@mipmap/back_arrow" />
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_weight="10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/trade_record_white_conor_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/trade_record_search_img" />
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:gravity="left|center_vertical"
+                android:hint="请输入商户名、地点或商品名" />
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_address"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:layout_weight="3"
+            android:background="@mipmap/address" />
+
+    </LinearLayout>
+</layout>

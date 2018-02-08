@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 边框颜色 -->
+    <color name="border">#9bc6e0</color>
+
+    <color name="colorPrimary">#FD8169</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#e6e6e6</color>
+    <color name="body_color">#F8F8F8</color>
+    <color name="colorTransparent">#00000000</color>
+    <!--页面背景的颜色-->
+    <color name="colorPageBg">#f2f4f5</color>
+    <!--item的5.0一下版本选择器颜色-->
+    <color name="itemLowBackground">#d9d9d9</color>
+
+    <!-- 边框颜色 -->
+    <color name="bordercolor">#4F4F4F</color>
+    <!-- 签购单边框颜色 -->
+    <color name="bill_bordercolor">#D93600</color>
+    <!-- 签购单背景颜色 -->
+    <color name="bill_backgroundcolor">#ECFDF7</color>
+    <!-- 新签购单背景颜色 -->
+    <color name="new_bill_backgroundcolor">#f4fbff</color> 
+    <color name="new_bill_backgroundcolor_frame">#999999</color> 
+    <color name="new_bill_backgroundcolor_tip">#d5e9f0</color> 
+    <!-- 透明色 -->
+    <color name="clear">#00000000</color>
+    <!--tab标签栏文字的颜色-->
+    <color name="colorTabText">#585858</color>
+    <!-- 正常字体颜色 -->
+    <color name="normal_text">#545454</color>
+    
+    <!-- 淡蓝色字体 -->
+    <color name="light_blue">#005395</color>
+    <!--淡 淡蓝色字体 -->
+    <color name="light_light_blue">#4C85DF</color>
+    
+    <!-- 深蓝色 -->
+    <color name="deep_blue">#04176d</color>
+    
+    <!-- 树叶绿 -->
+    <color name="leaves_green">#75a300</color>
+    
+    <!-- 底部按钮字体颜色 -->
+    <color name="bottom_button_text">#fff</color>
+    
+    <color name="bank_list_view_divider">#9ed1ec</color>
+
+    <color name="bank_name_hint_color">#929394</color>
+    <color name="background_color">#f0eff4</color>
+    <color name="register_background_color">#ffffff</color>
+    
+    <!-- 在深色背景上文字颜色  接近白色-->
+    <color name="cancle_ok_color">#FFFFFF</color>
+    <color name="paymentAmount_ok_color">#F0EFF4</color>
+    
+    <!-- 最浅浅灰色  默认背景文字颜色   -->
+    <color name="light_light_grey_color">#DDDDDD</color>
+    
+    <!-- 浅灰色   横线颜色  -->
+    <color name="light_grey_color">#CCCCCC</color>
+    
+     <!-- 灰色  主要字体颜色  -->
+    <color name="grey_color">#777777</color>
+    
+    <!-- 黑色   输出及不能修改内容字体颜色  -->
+    <color name="keyboardnumber">#000000</color>
+    <!-- 蓝色  突出字体颜色/主题title栏背景色  -->
+    <color name="blue_color">#548BDB</color>
+    <!-- 红色  失败字体颜色  -->
+    <color name="red_color">#FF5200</color>
+    
+    <!-- 深绿    金额字体颜色用在浅色背景上   -->
+    <color name="amount_color">#24CC3A</color> 
+    
+    <!-- 浅绿  突出字体颜色/主题title栏背景色  -->
+    <color name="light_green_color">#5BFF26</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="bt_grey">#EFEFEF</color>
+    <color name="verify_btn">@color/grey_color</color>
+   
+    <!-- 新版账账通 -->
+    <!-- 登陆按钮蓝色背景   -->
+    <color name="login_blue_nomal_top">#00bb9a</color> 
+    <color name="login_blue_nomal_buttom">#00a78b</color>
+    <!-- 灰色按钮 -->
+    <color name="login_enable_buttom">#d1cfcf</color>
+    <!--<color name="login_blue_nomal">#3f79da</color>-->
+    <!-- OK按钮绿色背景   -->
+    <color name="ok_green_nomal">#186905</color>
+    <color name="ok_green_nomal_button">#65ba54</color>
+    <color name="bt_zztongdialog_nomal">#6bbc5b</color>
+    <color name="bt_zztongdialog_pressed">#1b650e</color>
+    <color name="bt_zztong_cancle_nomal">#f2f2f2</color>
+     <color name="bt_zztong_cancle_pressed">#dbdbdb</color>
+    <!-- 登陆按按下钮蓝色背景 -->
+    <color name="login_blue_pressed">#029a81</color>
+    
+    <!-- 注册按钮边框颜色 -->
+    <color name="login_registr_nomal">#8bc2eb</color>
+    <!-- 注册按钮按下背景颜色 -->
+    <color name="login_registr_pressed">#F5F5F5</color>
+    <!-- 注册按钮文字颜色 -->
+    <color name="login_registr_text">#0f85d6</color>
+    <!-- 注册EditText边框颜色 -->
+    <color name="login_edittext_color">#d7d7d7</color>
+    <!-- 注册忘记密码文字颜色 -->
+    <color name="login_forpwd_text">#666666</color>
+    <!-- 服务设置分割线颜色 -->
+    <color name="setting_line_color">#d7d7d7</color>
+    <!-- 服务推出按钮默认颜色 -->
+    <color name="setting_exit_color">#f46d57</color>
+    <!-- 服务推出按钮按下颜色 -->
+    <color name="setting_exit_pressed_color">#f37b68</color>
+    <!-- 服务设置背景颜色 -->
+    <color name="setting_bg_color">#f8f8f8</color>
+     <!-- 通知内容颜色 -->
+    <color name="notice_text_color">#888888</color>
+   					 <!-- 底部菜单 -->
+    <!-- 背景颜色-->
+    <color name="bottom_tab_bg_color">#000000</color>
+    <color name="top_tab_bg_color">#548BDB</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+    <!-- 广发新增 -->
+    <color name="color_blue">#3b76dd</color>
+    <color name="color_allMoney">#568ceb</color>
+    <color name="color_grey_text">#888888</color>
+    <color name="color_grey_money">#222222</color> 
+    <color name="light_red">#f25454</color> 
+    
+    <color name="reset_carame_text">#1b87d3</color>
+    <color name="reset_carame_bg">#ffffff</color>
+    <color name="carame_complite_start">#7a63e4</color>
+     <color name="carame_complite_end">#3f79da</color>
+    <!-- 首页色块 -->
+    <color name="new_indexbg_blue">#43a1e1</color>
+    <color name="new_indexbg_green">#02b192</color>
+    <color name="new_indexbg_violet">#ad59cb</color>
+    <color name="new_indexbg_yellow">#f9d539</color>
+    <color name="new_indexbg_yellow1">#f88f12</color>
+    <!-- 撤销结果页背景 -->
+    <color name="revoke_result_bg">#f6f6f6</color>
+    <color name="revoke_split_line">#eaeaea</color>
+    <!-- 会员界面 -->
+    <color name="member_create">#70B1FC</color>
+    <color name="coupon_check">#F15A24</color>
+
+    <!--优惠券底部pop选择-->
+    <drawable name="sheetClicked">#ff9605</drawable>
+    <drawable name="sheetNormal">#ffffff</drawable>
+
+
+    <color name="sheetTextcolor">#cccccc</color>
+    <color name="sheetTextClicked">#ff9605</color>
+
+    <!--优惠券选中颜色值-->
+    <color name="couponColor01">#999A01</color>
+    <color name="couponColor02">#3399FE</color>
+    <color name="couponColor03">#FF3366</color>
+    <color name="couponColor04">#FF6634</color>
+    <color name="couponColor05">#999999</color>
+    <color name="couponColor06">#65CC33</color>
+    <color name="couponColor07">#FFFF67</color>
+    <color name="couponColor08">#CC33FF</color>
+    <color name="couponColor09">#006634</color>
+    <color name="couponColor10">#CD6567</color>
+
+    <color name="placeholder_color">#1A000000</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+</resources>
