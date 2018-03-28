@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\hzhao\\Desktop\\coupon\\http\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-eu\\values-eu.xml",
+            "outputFile": "C:\\Users\\hzhao\\Desktop\\project\\coupon\\http\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-eu\\values-eu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hzhao\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\3dc3c257018d23495fcd268ab8d75671\\res\\values-eu\\values-eu.xml",

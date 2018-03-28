@@ -10,8 +10,12 @@
     <string name="discount">折</string>
     <string name="inwaiting">人在等</string>
 
+    <string name="login">登录</string>
+    <string name="login_forget_pwd">忘记密码</string>
     <string name="transition_header_img">transition_header_img</string>
     <string name="actionbar_search">绑定微信公众号</string>
     <string name="tv_choose_color">选择颜色</string>
     <string name="tv_title">标题</string>
+    <string name="hint_cannot_qrcode_paytype">“收款码”支付方式不可用！</string>
+
 </resources>

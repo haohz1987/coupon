@@ -1,5 +1,6 @@
 package com.handpay.coupon.ui.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,11 +23,14 @@ import com.handpay.coupon.ui.adapter.MyFragmentPagerAdapter;
 import com.handpay.coupon.ui.fragment.CouponFragment;
 import com.handpay.coupon.ui.fragment.MechantFragment;
 import com.handpay.coupon.ui.fragment.ScanFragment;
-import com.handpay.coupon.utils.RxToast;
 
 import java.util.ArrayList;
 
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener{
 
@@ -46,12 +50,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initId();
         initRxBus();//顶部标题栏切换
         initContentFragment();
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                subscriber.onCompleted();
+            }
+        }).subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+        });
+
     }
-//    private void initStatusView() {
-//        ViewGroup.LayoutParams layoutParams = mBinding.viewStatus.getLayoutParams();
-//        layoutParams.height = StatusBarUtil.getStatusBarHeight(this);
-//        mBinding.viewStatus.setLayoutParams(layoutParams);
-//    }
 
     private void initId() {
         toolbar = mBinding.toolbar;
@@ -169,7 +197,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                RxToast.info("绑定微信公众号");
+//                RxToast.info("绑定微信公众号");
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

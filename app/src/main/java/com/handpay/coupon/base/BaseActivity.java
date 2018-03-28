@@ -35,6 +35,7 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
     private ActivityBaseBinding mBaseBinding;
     private AnimationDrawable mAnimationDrawable;
     private CompositeSubscription mCompositeSubscription;
+    public BaseActivity mContext;
 
     protected <T extends View> T getView(int id) {
         return (T) findViewById(id);
@@ -43,6 +44,7 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext=this;
     }
 
     @Override
@@ -105,6 +107,7 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
 
     public void setTitle(CharSequence text) {
         mBaseBinding.toolBar.setTitle(text);
+        mBaseBinding.toolBar.setTitleTextColor(getResources().getColor(R.color.white));
     }
 
     protected void showLoading() {

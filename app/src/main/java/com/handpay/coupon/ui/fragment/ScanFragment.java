@@ -1,7 +1,9 @@
 package com.handpay.coupon.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 
@@ -10,6 +12,7 @@ import com.handpay.coupon.base.BaseFragment;
 import com.handpay.coupon.databinding.FragmentCouponSelectBinding;
 import com.handpay.coupon.utils.CommonUtils;
 import com.handpay.coupon.utils.LogT;
+import com.handpay.coupon.utils.RxToast;
 
 /**
  * Created by haohz on 2018/2/2.
@@ -42,6 +45,7 @@ public class ScanFragment extends BaseFragment<FragmentCouponSelectBinding> impl
 //        bindingView.etPreferentialAmount.setText("2.00");
 
     }
+
     /**
      * 从后台返回前台依然会弹出系统键盘
      */
@@ -205,9 +209,44 @@ public class ScanFragment extends BaseFragment<FragmentCouponSelectBinding> impl
         } else if (i == R.id.rf_hpKbCancle) {
             c = '-';
             moneyText(dealInput(c));
-        } else if(i== R.id.rf_wechat_btn){
-//            startActivity(new Intent(getActivity(),));
+        } else if (i == R.id.rf_wechat_btn) {
+            // TODO: 2018/3/2  更换扫码基类
+//            startActivity(new Intent(getActivity(), CaptureActivity.class));
+        } else if (i == R.id.rf_hpKbOk) {
+            showNumerousMultiChoiceDialog();
         }
+    }
+
+    private void showNumerousMultiChoiceDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("优惠券:");
+        builder.setIcon(R.mipmap.ic_launcher);
+        final String[] items = new String[]{"满100减10", "满200减30", "9折", "8折"};/*设置多选的内容*/
+        final boolean[] checkedItems = new boolean[]{false, false, false, false};/*设置多选默认状态*/
+
+        builder.setMultiChoiceItems(items, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {/*设置多选的点击事件*/
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+//                if((checkedItems[0] && which==1) ||(checkedItems[1] && which==0) || (checkedItems[2] && which==3) || (checkedItems[3] && which==2)){
+//                    RxToast.info("相同类型的优惠券不能同时使用");
+//                }
+                checkedItems[which] = isChecked;
+            }
+        });
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                RxToast.info("跳转智能pos付款页面");
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                RxToast.info("取消");
+            }
+        });
+        builder.setCancelable(true);
+        builder.show();
     }
 
     protected void restZero() {

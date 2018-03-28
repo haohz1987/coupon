@@ -12,7 +12,7 @@ public class ActionBar {
 	//标题
 	public String title;
 	//左边图片
-	public int leftResId     = -1;
+	public int leftResId = -1;
 	//左边图片是否显示
 	public boolean isLeftShow = false;
 	//右边图片
