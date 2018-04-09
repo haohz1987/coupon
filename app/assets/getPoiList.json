@@ -1,0 +1,37 @@
+{
+  "errcode":0,
+  "errmsg":"ok",
+  "business_list":[
+    {"base_info":{
+      "sid":"100",
+      "poi_id":"271864249",
+      "business_name":"茶餐厅",
+      "branch_name":"中山公园店",
+      "address":"鲁班路11 号",
+      "available_state":1
+    }},
+    {"base_info":{
+      "sid":"100",
+      "poi_id":"271864249",
+      "business_name":"川菜",
+      "branch_name":"复原路店",
+      "address":"复原路路11 号",
+      "available_state":2
+    }},
+    {"base_info":{
+      "sid":"100",
+      "poi_id":"271864249",
+      "business_name":"麦当劳",
+      "branch_name":"艺苑路店",
+      "address":"艺苑路11 号",
+      "available_state":3
+    }},
+    {"base_info":{
+      "sid":"101",
+      "business_name":"麦当劳",
+      "branch_name":"赤岗路店",
+      "address":"赤岗路102 号",
+      "available_state":4
+    }}],
+  "total_count":"4"
+}

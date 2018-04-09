@@ -1,6 +1,7 @@
 package com.handpay.coupon.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,13 +11,14 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
-import com.handpay.coupon.bean.ManageBeans;
+import com.handpay.coupon.bean.PoiListBean;
 import com.handpay.coupon.databinding.FragmentMechantBinding;
 import com.handpay.coupon.ui.activity.MainActivity;
-import com.handpay.coupon.ui.adapter.MechantAdapter;
+import com.handpay.coupon.ui.activity.UploadImage;
+import com.handpay.coupon.ui.adapter.PoiListAdapter;
 import com.handpay.coupon.utils.ACache;
 import com.handpay.coupon.utils.AssetsUtil;
-import com.handpay.coupon.utils.LogT;
+import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.RxToast;
 
 /**
@@ -33,21 +35,40 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
     private boolean mIsLoading = false;
     private ACache aCache;
     private MainActivity activity;
-    private MechantAdapter mechantAdapter;
+    private PoiListAdapter poiListAdapter;
     //    private HotMovieBean mHotMovieBean;
     private View mHeaderView = null;
+
+    @Override
+    public int setContent() {
+        return R.layout.fragment_mechant;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         showContentView();
         aCache = ACache.get(getActivity());
-        mechantAdapter = new MechantAdapter(activity);
-        setAdapter();
-//        mHotMovieBean = (HotMovieBean) aCache.getAsObject(Constants.ONE_HOT_MOVIE); 有网络后将数据缓存到acache
-//        isPrepared = true;
-    }
+        poiListAdapter = new PoiListAdapter(activity) {
+            @Override
+            public void doStoreClick(int available_state,String poi_id) {
+                if (available_state == 3){
+                    RxToast.info("根据商户号，查询商户详情:"+poi_id);
 
+                }else
+                    RxToast.info("修改或查看门店信息");
+            }
+        };
+        setAdapter();
+//      mHotMovieBean = (HotMovieBean) aCache.getAsObject(Constants.ONE_HOT_MOVIE); 有网络后将数据缓存到acache
+//      isPrepared = true;
+        bindingView.btnCreate.setOnClickListener(new DebouncingOnClickListener() {
+            @Override
+            public void doClick(View v) {
+                activity.startActivity(new Intent(activity, UploadImage.class));
+            }
+        });
+    }
     //懒加载
     @Override
     protected void loadData() {
@@ -100,8 +121,8 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
 //        }
 //        bindingView.listOne.addHeaderView(mHeaderView);
         getMechantList();
-        bindingView.listOne.setAdapter(mechantAdapter);
-        mechantAdapter.notifyDataSetChanged();
+        bindingView.listOne.setAdapter(poiListAdapter);
+        poiListAdapter.notifyDataSetChanged();
 
         isFirst = false;
     }
@@ -125,26 +146,21 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
     }
 
     private void getMechantList() {
-        String temp = AssetsUtil.loadlocalData(activity, "getManagerList.json");
+        String temp = AssetsUtil.loadlocalData(activity, "getPoiList.json");
         if (TextUtils.isEmpty(temp)) {
             RxToast.info("获取temp失败："+temp);
             return;
         }
-        LogT.w(temp);
-        ManageBeans manageBeans = new Gson().fromJson(temp, ManageBeans.class);
-        mechantAdapter.clear();
-        mechantAdapter.addAll(manageBeans.getResult());
+        PoiListBean poiListBean = new Gson().fromJson(temp,PoiListBean.class);
+        poiListAdapter.clear();
+        poiListAdapter.addAll(poiListBean.getBusiness_list());
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         activity = (MainActivity) context;
-    }
-
-    @Override
-    public int setContent() {
-        return R.layout.fragment_mechant;
     }
 
     /**
@@ -165,6 +181,9 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
             bindingView.getRoot().setVisibility(View.VISIBLE);
         }
     }
-
+//    public void intentDetail(){
+//        Intent intent = new Intent(activity,MainActivity.class);
+//        startActivity(intent);
+//    }
 
 }

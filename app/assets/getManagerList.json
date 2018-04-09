@@ -14,7 +14,7 @@
       "storeName":"茶餐厅",
       "storeIcon":"http://p0.meituan.net/deal/f95d88734ab566b7c9b1bd31926a782e51858.jpg",
       "storeQueue":15,
-      "couponAmount":"9折",
+      "couponAmount":"14km",
       "explain":"到店请出示优惠券"
     },
     {
@@ -22,7 +22,7 @@
       "storeName":"火锅自助餐厅",
       "storeIcon":"http://p0.meituan.net/deal/__49021345__6631633.jpg",
       "storeQueue":10,
-      "couponAmount":"5折",
+      "couponAmount":"152km",
       "explain":"到店请出示优惠券，支持票据打印"
     },
     {
@@ -30,7 +30,7 @@
       "storeName":"川菜",
       "storeIcon":"http://p0.meituan.net/mogu/657659cd0f6ada9ba68115b298b9766162717.jpg",
       "storeQueue":0,
-      "couponAmount":"满50减10",
+      "couponAmount":"14km",
       "explain":"到店请出示优惠券"
     },
     {
@@ -38,7 +38,7 @@
       "storeName":"美食广场",
       "storeIcon":"https://img.meituan.net/msmerchant/754f953e2a7b25d4db55faab07013fb11390753.jpg",
       "storeQueue":20,
-      "couponAmount":"满100减20",
+      "couponAmount":"1km",
       "explain":"到店请出示优惠券"
     },
     {
@@ -46,7 +46,7 @@
       "storeName":"哥老官美蛙",
       "storeIcon":"http://p0.meituan.net/mogu/657659cd0f6ada9ba68115b298b9766162717.jpg",
       "storeQueue":2,
-      "couponAmount":"8折",
+      "couponAmount":"4km",
       "explain":"到店请出示优惠券"
     },
     {
@@ -54,7 +54,7 @@
       "storeName":"查厘士",
       "storeIcon":"https://img.meituan.net/msmerchant/754f953e2a7b25d4db55faab07013fb11390753.jpg",
       "storeQueue":0,
-      "couponAmount":"满200减10",
+      "couponAmount":"8km",
       "explain":"到店请出示优惠券，支持票据打印"
     },
     {
@@ -62,7 +62,7 @@
       "storeName":"火锅自助餐厅",
       "storeIcon":"http://p0.meituan.net/deal/__49021345__6631633.jpg",
       "storeQueue":10,
-      "couponAmount":"5折",
+      "couponAmount":"9km",
       "explain":"到店请出示优惠券，支持票据打印"
     },
     {
@@ -70,7 +70,7 @@
       "storeName":"川菜",
       "storeIcon":"http://p0.meituan.net/mogu/657659cd0f6ada9ba68115b298b9766162717.jpg",
       "storeQueue":0,
-      "couponAmount":"满50减10",
+      "couponAmount":"20km",
       "explain":"到店请出示优惠券"
     },
     {
@@ -78,7 +78,7 @@
       "storeName":"美食广场",
       "storeIcon":"https://img.meituan.net/msmerchant/754f953e2a7b25d4db55faab07013fb11390753.jpg",
       "storeQueue":20,
-      "couponAmount":"满100减20",
+      "couponAmount":"17km",
       "explain":"到店请出示优惠券"
     },
   ]

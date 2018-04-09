@@ -5,7 +5,7 @@
 
         <variable
             name="resultBean"
-            type="com.handpay.coupon.bean.ManageBeans.ResultBean" />
+            type="com.handpay.coupon.bean.PoiListBean.BusinessListBean.BaseInfoBean" />
     </data>
 
     <LinearLayout

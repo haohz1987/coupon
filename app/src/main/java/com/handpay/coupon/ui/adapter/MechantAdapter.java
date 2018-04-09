@@ -28,7 +28,6 @@ public class MechantAdapter extends BaseRecyclerViewAdapter<ManageBeans.ResultBe
 
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        return null;
         return new ViewHolder(parent, R.layout.item_mechant);
     }
 

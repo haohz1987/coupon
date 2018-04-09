@@ -11,7 +11,6 @@ import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
 import com.handpay.coupon.databinding.FragmentCouponSelectBinding;
 import com.handpay.coupon.utils.CommonUtils;
-import com.handpay.coupon.utils.LogT;
 import com.handpay.coupon.utils.RxToast;
 
 /**
@@ -52,7 +51,6 @@ public class ScanFragment extends BaseFragment<FragmentCouponSelectBinding> impl
     @Override
     public void onResume() {
         super.onResume();
-        LogT.w("屏蔽系统键盘");
         etAmount.clearFocus();
         CommonUtils.disableShowSoftInput(etAmount);
         CommonUtils.disableShowSoftInput(etCoupon);
@@ -220,7 +218,7 @@ public class ScanFragment extends BaseFragment<FragmentCouponSelectBinding> impl
     private void showNumerousMultiChoiceDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("优惠券:");
-        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setIcon(R.mipmap.ic_launche);
         final String[] items = new String[]{"满100减10", "满200减30", "9折", "8折"};/*设置多选的内容*/
         final boolean[] checkedItems = new boolean[]{false, false, false, false};/*设置多选默认状态*/
 

@@ -322,7 +322,8 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
             // 高斯模糊背景 原来 参数：12,5  23,4
             Glide.with(this).load(imgUrl)
                     .error(R.mipmap.stackblur_default)
-                    .bitmapTransform(new BlurTransformation(this, 23, 4)).listener(new RequestListener<String, GlideDrawable>() {
+                    .bitmapTransform(new BlurTransformation(this, 23, 4))
+                    .listener(new RequestListener<String, GlideDrawable>() {
                 @Override
                 public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
                     return false;
@@ -335,7 +336,8 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
                     bindingTitleView.ivBaseTitlebarBg.setVisibility(View.VISIBLE);
                     return false;
                 }
-            }).into(bindingTitleView.ivBaseTitlebarBg);
+            })
+            .into(bindingTitleView.ivBaseTitlebarBg);
 
         }
     }

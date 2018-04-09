@@ -8,4 +8,10 @@
     <item name="restart_preview" type="id"/>
     <item name="return_scan_result" type="id"/>
 
+    <!--轮播图 -->
+    <item name="autoloopswitch_viewpager_id" type="id"/>
+    <item name="autoloopswitch_lable_image_id" type="id"/>
+    <item name="autoloopswitch_title_textview_id" type="id"/>
+    <item name="autoloopswitch_pagershow_id" type="id"/>
+
 </resources>

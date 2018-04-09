@@ -3,7 +3,7 @@
     <!-- 边框颜色 -->
     <color name="border">#9bc6e0</color>
 
-    <color name="colorPrimary">#FD8169</color>
+    <color name="colorPrimary">#00bb9a</color>
     <color name="white">#ffffff</color>
     <color name="c">#CCCCCC</color>
     <color name="e">#EEEEEE</color>
@@ -175,4 +175,5 @@
 
     <color name="qmui_config_color_gray_1">#353C46</color>
     <color name="qmui_config_color_blue">#1B88EE</color>
+    <color name="my_bg">#F1F4F6</color>
 </resources>

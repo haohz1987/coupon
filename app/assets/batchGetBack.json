@@ -1,0 +1,22 @@
+{ "errcode": 0,
+  "errmsg": "ok",
+  "location_list": [
+    {
+      "location_id": 493,
+      "name": "steventao home",
+      "phone": "020-12345678",
+      "address": "广东省广州市番禺区广东省广州市番禺区南浦大道",
+      "longitude": 113.280212402,
+      "latitude": 23.0350666046
+    },
+    {
+      "location_id": 468,
+      "name": "TIT 创意园B4",
+      "phone": "020-12345678",
+      "address": "广东省广州市海珠区",
+      "longitude": 113.325248718,
+      "latitude": 23.1008300781
+    }
+  ],
+  "count": 2
+}

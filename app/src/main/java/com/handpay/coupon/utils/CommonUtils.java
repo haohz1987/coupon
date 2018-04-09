@@ -69,31 +69,29 @@ public class CommonUtils {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(money);
     }
+
     /**
      * 禁止Edittext弹出软件盘，光标依然正常显示。
      */
-    public static void disableShowSoftInput(EditText editText)
-    {
-        if (android.os.Build.VERSION.SDK_INT <= 10)
-        {
+    public static void disableShowSoftInput(EditText editText) {
+        if (android.os.Build.VERSION.SDK_INT <= 10) {
             editText.setInputType(InputType.TYPE_NULL);
-        }
-        else {
+        } else {
             Class<EditText> cls = EditText.class;
             Method method;
             try {
-                method = cls.getMethod("setShowSoftInputOnFocus",boolean.class);
+                method = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
                 method.setAccessible(true);
                 method.invoke(editText, false);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 // TODO: handle exception
             }
 
             try {
-                method = cls.getMethod("setSoftInputShownOnFocus",boolean.class);
+                method = cls.getMethod("setSoftInputShownOnFocus", boolean.class);
                 method.setAccessible(true);
                 method.invoke(editText, false);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 // TODO: handle exception
             }
         }
@@ -139,6 +137,28 @@ public class CommonUtils {
                 group.removeView(child);
             }
         }
+    }
+
+    private static final double EARTH_RADIUS = 6378.137; //地球半径
+
+    /**
+     * 根据经纬度查询距离 lng1 经度 ，lat1 纬度 ，lng2 经度 ，lat2 纬度
+     */
+    private static double GetDistance(double lng1, double lat1, double lng2, double lat2) {
+        double radLat1 = rad(lat1);
+        double radLat2 = rad(lat2);
+        double a = radLat1 - radLat2;
+        double b = rad(lng1) - rad(lng2);
+
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+                Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+        s = s * EARTH_RADIUS * 1000;
+//     s = Math.round(s * 10000) / 10000;
+        return s;
+    }
+
+    private static double rad(double d) {
+        return d * Math.PI / 180.0;
     }
 
 }

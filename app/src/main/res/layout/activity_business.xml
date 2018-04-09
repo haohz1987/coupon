@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_upload"
+            android:layout_below="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/bg_btn_login_selected"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+</layout>

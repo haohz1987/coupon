@@ -21,6 +21,7 @@ import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseActivity;
 import com.handpay.coupon.databinding.ActivityLoginBinding;
 import com.handpay.coupon.utils.AndroidBug5497Workaround;
+import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.RxAnimationTool;
 import com.handpay.coupon.utils.RxToast;
 
@@ -29,7 +30,7 @@ import com.handpay.coupon.utils.RxToast;
  * from on 2018/1/5.
  */
 
-public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
+public class LoginActivity extends BaseActivity<ActivityLoginBinding>{
 
     private int screenHeight = 0;//屏幕高度
     private int keyHeight = 0; //软件盘弹起后所占高度
@@ -46,6 +47,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
         screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
         initEvent();
+    }
+    public boolean isFullScreen(Activity activity) {
+        return (activity.getWindow().getAttributes().flags &
+                WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
     }
     @SuppressLint("ClickableViewAccessibility")
     private void initEvent() {
@@ -103,6 +108,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
         bindingView.scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
                 return true;
             }
         });
@@ -138,9 +144,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
             }
         });
 
-        bindingView.btnLogin.setOnClickListener(new View.OnClickListener() {
+        bindingView.btnLogin.setOnClickListener(new DebouncingOnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void doClick(View v) {
                 if (getWindow().peekDecorView() != null) {
                     InputMethodManager inputmanger = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (inputmanger != null) {
@@ -149,15 +155,15 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
                 }
             }
         });
-        bindingView.ivCleanPhone.setOnClickListener(new View.OnClickListener() {
+        bindingView.ivCleanPhone.setOnClickListener(new DebouncingOnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void doClick(View v) {
                 bindingView.etMobile.setText("");
             }
         });
-        bindingView.cleanPassword.setOnClickListener(new View.OnClickListener() {
+        bindingView.cleanPassword.setOnClickListener(new DebouncingOnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void doClick(View v) {
                 bindingView.etPassword.setText("");
             }
         });
@@ -177,10 +183,5 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {//
             }
         });
     }
-    public boolean isFullScreen(Activity activity) {
-        return (activity.getWindow().getAttributes().flags &
-                WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
-    }
-
 
 }

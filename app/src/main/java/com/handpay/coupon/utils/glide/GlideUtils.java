@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * 缓存、文件判断、md5时间戳加密
+ * vh为显示图片的比例，4/3=1.33
  */
 public class GlideUtils {
     /**
@@ -26,45 +27,120 @@ public class GlideUtils {
      * @param imageView
      * @param imageUrl  网址
      */
-    public static void noneCache(Context context, ImageView imageView, String imageUrl, ACache mACache, String cacheName) {
-        Glide.with(context).load(imageUrl).placeholder(R.color.placeholder_color).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+    public static void noneCache(Context context, final ImageView imageView, String imageUrl, ACache mACache, String cacheName) {
+        Glide.with(context).load(imageUrl).placeholder(R.color.placeholder_color).diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        if (imageView == null) {
+//                            return false;
+//                        }
+//                        if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//                        }
+//                        ViewGroup.LayoutParams params = imageView.getLayoutParams();
+//                        int vw = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+//                        //float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                        int vh = (int) ((float) vw / (float) 1.33);
+//                        params.height = vh + imageView.getPaddingTop() + imageView.getPaddingBottom();
+//                        imageView.setLayoutParams(params);
+//                        return false;
+//                    }
+//                })
+                .into(imageView);
         cacheImage(imageUrl, context, new MyGlideCacheListener());
-        if(cacheName!=null && imageUrl!=null){
+        if (cacheName != null && imageUrl != null) {
             mACache.put(cacheName, imageUrl);
         }
     }
+
     /**
      * Glide缓存
+     *
      * @param context
      * @param imageView 放入的图片
      * @param qrCodeUrl 请求网址
-     * @param mACache 本地缓存工具
+     * @param mACache   本地缓存工具
      * @param cacheName 缓存到本地的网址标签名
      */
-    public static void readCache(Context context,ImageView imageView, String qrCodeUrl,ACache mACache, String cacheName) {
-        cacheName = cacheName+"_"+System.currentTimeMillis();
+    public static void readCache(Context context, final ImageView imageView, String qrCodeUrl, ACache mACache, String cacheName) {
+        cacheName = cacheName + "_" + System.currentTimeMillis();
         //有缓存的网址
         if (!ACache.isEmpty(mACache.getAsString(cacheName))) {
             String qrCodeUrlCache = mACache.getAsString(cacheName);
             if (!GlideUtils.haveCache(context, qrCodeUrlCache)) {
-                GlideUtils.noneCache(context,imageView, qrCodeUrl,mACache,cacheName);
+                GlideUtils.noneCache(context, imageView, qrCodeUrl, mACache, cacheName);
                 return;
             }
-            if(ACache.isEmpty(qrCodeUrl)){
-                Glide.with(context).load(GlideUtils.getCache(context, qrCodeUrlCache)).into(imageView);
+            if (ACache.isEmpty(qrCodeUrl)) {
+                Glide.with(context).load(GlideUtils.getCache(context, qrCodeUrlCache))
+//                        .listener(new RequestListener<String, GlideDrawable>() {
+//                            @Override
+//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                                if (imageView == null) {
+//                                    return false;
+//                                }
+//                                if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//                                }
+//                                ViewGroup.LayoutParams params = imageView.getLayoutParams();
+//                                int vw = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+//                                //float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                                int vh = (int) ((float) vw / (float) 1.33);
+//                                params.height = vh + imageView.getPaddingTop() + imageView.getPaddingBottom();
+//                                imageView.setLayoutParams(params);
+//                                return false;
+//                            }
+//                        })
+                        .into(imageView);
                 return;
             }
             if (qrCodeUrl.equals(qrCodeUrlCache)) {
-                Glide.with(context).load(GlideUtils.getCache(context, qrCodeUrl)).into(imageView);
+                Glide.with(context).load(GlideUtils.getCache(context, qrCodeUrl))
+//                        .listener(new RequestListener<String, GlideDrawable>() {
+//                            @Override
+//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                                if (imageView == null) {
+//                                    return false;
+//                                }
+//                                if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//                                }
+//                                ViewGroup.LayoutParams params = imageView.getLayoutParams();
+//                                int vw = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+//                                //float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                                int vh = (int) ((float) vw / (float) 1.33);
+//                                params.height = vh + imageView.getPaddingTop() + imageView.getPaddingBottom();
+//                                imageView.setLayoutParams(params);
+//                                return false;
+//                            }
+//                        })
+                        .into(imageView);
             }
             //缓存地址错误或不是最新
             else {
-                GlideUtils.noneCache(context,imageView, qrCodeUrl,mACache,cacheName);
+                GlideUtils.noneCache(context, imageView, qrCodeUrl, mACache, cacheName);
             }
         } else {
-            GlideUtils.noneCache(context,imageView, qrCodeUrl,mACache,cacheName);
+            GlideUtils.noneCache(context, imageView, qrCodeUrl, mACache, cacheName);
         }
     }
+
     /**
      * 没有缓存 或 缓存不是最新
      * 使用ACache保存网址
@@ -72,10 +148,35 @@ public class GlideUtils {
      * @param imageView
      * @param imageUrl  网址
      */
-    public static void noneCache(Context context, ImageView imageView, String imageUrl) {
-        Glide.with(context).load(imageUrl).placeholder(R.color.placeholder_color).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+    public static void noneCache(Context context, final ImageView imageView, String imageUrl) {
+        Glide.with(context).load(imageUrl).placeholder(R.color.placeholder_color).diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        if (imageView == null) {
+//                            return false;
+//                        }
+//                        if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//                        }
+//                        ViewGroup.LayoutParams params = imageView.getLayoutParams();
+//                        int vw = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+//                        //float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                        int vh = (int) ((float) vw / (float) 1.33);
+//                        params.height = vh + imageView.getPaddingTop() + imageView.getPaddingBottom();
+//                        imageView.setLayoutParams(params);
+//                        return false;
+//                    }
+//                })
+                .into(imageView);
         cacheImage(imageUrl, context, new MyGlideCacheListener());
     }
+
     /**
      * 获取缓存的路径
      *
@@ -102,6 +203,7 @@ public class GlideUtils {
 
     /**
      * 缓存图片
+     *
      * @param fileUrl
      * @param context
      */
@@ -111,6 +213,7 @@ public class GlideUtils {
 
     /**
      * 缓存图片
+     *
      * @param fileUrl
      * @param context
      * @param cacheFile
@@ -145,10 +248,11 @@ public class GlideUtils {
 
     /**
      * 缓存多张图片
+     *
      * @param fileUrls
      * @param context
      */
-    public static void cacheImage(List<String> fileUrls, Context context ) {
+    public static void cacheImage(List<String> fileUrls, Context context) {
         for (String fileUrl : fileUrls) {
             cacheImage(fileUrl, context, null, null);
         }
@@ -156,6 +260,7 @@ public class GlideUtils {
 
     /**
      * 缓存多张图片
+     *
      * @param fileUrls
      * @param context
      * @param cacheFile
@@ -165,6 +270,7 @@ public class GlideUtils {
             cacheImage(fileUrl, context, cacheFile, null);
         }
     }
+
     /**
      * 判断文件是否存在
      */
@@ -181,6 +287,7 @@ public class GlideUtils {
 
         return true;
     }
+
     //判断文件是否存在
     public static boolean fileIsExists(File f) {
         try {
@@ -215,6 +322,7 @@ public class GlideUtils {
         SimpleDateFormat format = new SimpleDateFormat(defaultDateFormat);
         return format.format(time);
     }
+
     public static long getTimestampF() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         long time = timestamp.getTime();

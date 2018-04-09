@@ -37,7 +37,7 @@
                     android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/ic_launche" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

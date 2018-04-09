@@ -5,7 +5,7 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/grey"
         android:clipToPadding="true"
         android:fitsSystemWindows="true"
         android:orientation="vertical">
@@ -16,10 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:background="@null"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launche" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -43,7 +43,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginTop="150dp"
+                    android:layout_marginTop="160dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingLeft="13dp">

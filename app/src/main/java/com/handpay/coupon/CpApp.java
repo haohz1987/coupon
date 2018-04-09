@@ -1,10 +1,13 @@
 package com.handpay.coupon;
 
 import android.app.Application;
+import android.app.Service;
 import android.content.Context;
+import android.os.Vibrator;
 import android.util.Log;
 
-import com.handpay.coupon.utils.CustomerExceptionHandler;
+import com.baidu.mapapi.SDKInitializer;
+import com.handpay.coupon.baidu.LocationService;
 import com.handpay.coupon.utils.LogT;
 
 /**
@@ -12,8 +15,12 @@ import com.handpay.coupon.utils.LogT;
  */
 
 public class CpApp extends Application {
+
     private static CpApp cpApp;
     public static Context mContext;
+    public LocationService locationService;
+    public Vibrator mVibrator;
+
     public static CpApp getInstance() {
         return cpApp;
     }
@@ -24,7 +31,13 @@ public class CpApp extends Application {
         cpApp = this;
         mContext = getApplicationContext();
         LogT.init(true, Log.VERBOSE);//不输出到文件
-        Thread.setDefaultUncaughtExceptionHandler(new CustomerExceptionHandler());
+//        Thread.setDefaultUncaughtExceptionHandler(new CustomerExceptionHandler());
+
+        //初始化百度基础定位
+        locationService = new LocationService(getApplicationContext());
+        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+        SDKInitializer.initialize(getApplicationContext());
+
     }
 
 }

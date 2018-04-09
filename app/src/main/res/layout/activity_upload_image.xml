@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.handpay.coupon.view.MyNestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <RelativeLayout
+                android:id="@+id/rl_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_show"
+                    style="@style/text_style"
+                    android:layout_centerVertical="true"
+                    android:text="@string/show_tip" />
+
+                <com.handpay.coupon.view.grideImage.GridImageView
+                    android:id="@+id/giv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/tv_show"
+                    android:layout_toRightOf="@+id/tv_show" />
+
+                <TextView
+                    android:id="@+id/tv_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/giv"
+                    android:text="@string/upload_tip" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_business_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_business_name"
+                    style="@style/text_style"
+                    android:text="店铺名称" />
+
+                <EditText
+                    android:id="@+id/et_business_name"
+                    style="@style/edit_text_style"
+                    android:hint="请输入店铺名称" />
+
+                <ImageView
+                    android:id="@+id/iv_business_name"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_branch_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_branch_name"
+                    style="@style/text_style"
+                    android:text="门店名称" />
+
+                <EditText
+                    android:id="@+id/et_branch_name"
+                    style="@style/edit_text_style"
+                    android:hint="请输入分店名称" />
+
+                <ImageView
+                    android:id="@+id/iv_branch_name"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_pcb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_pcb"
+                    style="@style/text_style"
+                    android:text="地区" />
+
+                <EditText
+                    android:id="@+id/et_pcb"
+                    style="@style/edit_text_style"
+                    android:hint="请选择省市区地址" />
+
+                <ImageView
+                    android:id="@+id/iv_pcb"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/text_style"
+                    android:text="详细地址" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/edit_text_style"
+                    android:hint="请输入详细地址，不含省市信息" />
+
+                <ImageView
+                    android:id="@+id/iv_address"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_telephone"
+                    style="@style/text_style"
+                    android:text="门店电话" />
+
+                <EditText
+                    android:id="@+id/et_telephone"
+                    style="@style/edit_text_style"
+                    android:hint="请输入门店电话"
+                    android:inputType="phone" />
+
+                <ImageView
+                    android:id="@+id/iv_telephone"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_categories"
+                    style="@style/text_style"
+                    android:text="门店类型" />
+
+                <EditText
+                    android:id="@+id/et_categories"
+                    style="@style/edit_text_style"
+                    android:hint="请选择门店类型" />
+
+                <ImageView
+                    android:id="@+id/iv_categories"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_md_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_md_address"
+                    style="@style/text_style"
+                    android:text="门店地址" />
+
+                <EditText
+                    android:id="@+id/et_md_address"
+                    style="@style/edit_text_style"
+                    android:hint="请定位门店地址" />
+
+                <ImageView
+                    android:id="@+id/iv_md_address"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_recommend"
+                    style="@style/text_style"
+                    android:text="推荐品" />
+
+                <EditText
+                    android:id="@+id/et_recommend"
+                    style="@style/edit_text_style"
+                    android:hint="请输入推荐内容" />
+
+                <ImageView
+                    android:id="@+id/iv_recommend"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_special"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_special"
+                    style="@style/text_style"
+                    android:text="特色服务" />
+
+                <EditText
+                    android:id="@+id/et_special"
+                    style="@style/edit_text_style"
+                    android:hint="请输入能提供的特色功能或服务" />
+
+                <ImageView
+                    android:id="@+id/iv_special"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_introduction"
+                    style="@style/text_style"
+                    android:text="商户简介" />
+
+                <EditText
+                    android:id="@+id/et_introduction"
+                    style="@style/edit_text_style"
+                    android:hint="请输入介绍商户信息等" />
+
+                <ImageView
+                    android:id="@+id/iv_introduction"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_open_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_open_time"
+                    style="@style/text_style"
+                    android:text="营业时间" />
+
+                <EditText
+                    android:id="@+id/et_open_time"
+                    style="@style/edit_text_style"
+                    android:hint="24 小时制表示，用“-”连接" />
+
+                <ImageView
+                    android:id="@+id/iv_open_time"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_avg_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_45"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_avg_price"
+                    style="@style/text_style"
+                    android:text="人均价格" />
+
+                <EditText
+                    android:id="@+id/et_avg_price"
+                    style="@style/edit_text_style"
+                    android:hint="请输入大于0 的整数" />
+
+                <ImageView
+                    android:id="@+id/iv_avg_price"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey_color" />
+
+            <Button
+                android:id="@+id/btn_upload"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/bg_btn_login_selected"
+                android:text="@string/upload"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </com.handpay.coupon.view.MyNestedScrollView>
+
+</layout>

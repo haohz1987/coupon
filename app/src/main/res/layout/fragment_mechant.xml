@@ -1,30 +1,36 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<com.example.jingbin.cloudreader.view.sliding.SlidingLayout xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/slidingLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--app:background_view="@layout/sliding_view_bg"-->
-    <!--app:sliding_mode="top"-->
-    <!--app:top_max="200dp">-->
-    <!--app:sliding_mode="both" 上下均显示-->
-    <!--app:sliding_pointer_mode="more"-->
-
-    <!--为了出现下拉阴影效果（加了上面的控件后就没有了）-->
-    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/frameLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarSize="4dp"
-        android:scrollbarThumbVertical="@color/tabBackground"
-        android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
-        <com.handpay.coupon.recyclrview.XRecyclerView
-            android:id="@+id/list_one"
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </FrameLayout>
-    <!--</com.example.jingbin.cloudreader.view.sliding.SlidingLayout>-->
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_create"
+            android:scrollbarSize="4dp"
+            android:scrollbarThumbVertical="@color/tabBackground"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.handpay.coupon.recyclrview.XRecyclerView
+                android:id="@+id/list_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </FrameLayout>
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+
+            android:background="@drawable/coupon_check_item_bg"
+            android:text="创建门店"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp_16" />
+    </RelativeLayout>
 </layout>

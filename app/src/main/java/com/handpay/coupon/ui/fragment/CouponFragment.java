@@ -11,6 +11,7 @@ import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
 import com.handpay.coupon.databinding.FragmentCouponBinding;
 import com.handpay.coupon.ui.adapter.MyFragmentPagerAdapter;
+import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.view.SelectCouponsSheet;
 
 import java.util.ArrayList;
@@ -44,9 +45,9 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
         showContentView();
 //        // item点击跳转
 //        initRxBus();
-        bindingView.btnCreate.setOnClickListener(new View.OnClickListener() {
+        bindingView.btnCreate.setOnClickListener(new DebouncingOnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void doClick(View v) {
                 SelectCouponsSheet.showSheet(getActivity(), CouponFragment.this, new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {}

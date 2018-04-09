@@ -89,20 +89,23 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
      * 设置titlebar
      */
     protected void setToolBar() {
-        setSupportActionBar(mBaseBinding.toolBar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            //去除默认Title显示
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.back_arrow);
-        }
-        mBaseBinding.toolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
+        if(null!=mBaseBinding.toolBar){
+            setSupportActionBar(mBaseBinding.toolBar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                //去除默认Title显示
+                actionBar.setDisplayShowTitleEnabled(false);
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setHomeAsUpIndicator(R.mipmap.back_arrow);
             }
-        });
+            mBaseBinding.toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
+
     }
 
     public void setTitle(CharSequence text) {
@@ -178,6 +181,7 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
         if (this.mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             this.mCompositeSubscription.unsubscribe();
         }
+
     }
 
     public void removeSubscription() {

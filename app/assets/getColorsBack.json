@@ -1,0 +1,18 @@
+{
+  "errcode": 0,
+  "errmsg": "ok",
+  "colors": [
+    {
+      "name": "Color010",
+      "value": "#61ad40"
+    },
+    {
+      "name": "Color020",
+      "value": "#169d5c"
+    },
+    {
+      "name": "Color030",
+      "value": "#239cda"
+    }
+  ]
+}

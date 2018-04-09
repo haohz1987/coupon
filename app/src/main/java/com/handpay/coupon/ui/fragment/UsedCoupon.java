@@ -11,19 +11,18 @@ import com.google.gson.Gson;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
 import com.handpay.coupon.bean.CouponBean;
-import com.handpay.coupon.databinding.FragmentMechantBinding;
+import com.handpay.coupon.databinding.FragmentRecycleBinding;
 import com.handpay.coupon.ui.activity.MainActivity;
 import com.handpay.coupon.ui.adapter.CouponAdapter;
 import com.handpay.coupon.utils.ACache;
 import com.handpay.coupon.utils.AssetsUtil;
-import com.handpay.coupon.utils.LogT;
 import com.handpay.coupon.utils.RxToast;
 
 /**
  * Created by haohz on 2018/2/2.
  */
 
-public class UsedCoupon extends BaseFragment<FragmentMechantBinding> {
+public class UsedCoupon extends BaseFragment<FragmentRecycleBinding> {
 
     // 初始化完成后加载数据
     private boolean isPrepared = false;
@@ -115,7 +114,7 @@ public class UsedCoupon extends BaseFragment<FragmentMechantBinding> {
             RxToast.info("获取temp失败："+temp);
             return;
         }
-        LogT.w(temp);
+//        LogT.w(temp);
         CouponBean couponBean = new Gson().fromJson(temp, CouponBean.class);
         couponAdapter.clear();
         couponAdapter.addAll(couponBean.getResult());
@@ -129,7 +128,7 @@ public class UsedCoupon extends BaseFragment<FragmentMechantBinding> {
 
     @Override
     public int setContent() {
-        return R.layout.fragment_mechant;
+        return R.layout.fragment_recycle;
     }
 
     /**

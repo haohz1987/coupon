@@ -28,7 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+//import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -117,7 +117,7 @@ public class HttpUtils {
         builder.baseUrl(apiUrl);//设置远程地址
         builder.addConverterFactory(new NullOnEmptyConverterFactory());
         builder.addConverterFactory(GsonConverterFactory.create(getGson()));
-        builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+//        builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
         return builder;
     }
 

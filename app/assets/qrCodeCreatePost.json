@@ -1,0 +1,12 @@
+{
+  "action_name": "QR_CARD",
+  "action_info": {
+    "card": {
+      "card_id": "pFS7Fjg8kV1IdDz01r4SQwMkuCKc",
+      "code": "198374613512",
+      "openid": "oFS7Fjl0WsZ9AMZqrI80nbIq8xrA",
+      " expire_seconds": "1800",
+      " is_unique_code": false
+    }
+  }
+}

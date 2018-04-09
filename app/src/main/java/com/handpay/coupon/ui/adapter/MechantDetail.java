@@ -17,6 +17,7 @@ import com.handpay.coupon.databinding.HeaderSlideBinding;
 import com.handpay.coupon.ui.activity.MechantQueue;
 import com.handpay.coupon.utils.ACache;
 import com.handpay.coupon.utils.PerfectClickListener;
+import com.handpay.coupon.utils.RxToast;
 import com.handpay.coupon.utils.glide.GlideUtils;
 
 public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, ActivityMechantDetailBinding> {
@@ -28,25 +29,26 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
         setContentView(R.layout.activity_mechant_detail);
         if (getIntent() != null) {
             resultBean = (ManageBeans.ResultBean) getIntent().getSerializableExtra("bean");
+            GlideUtils.readCache(this,
+                    bindingHeaderView.ivStoreLogo,            //图片容器
+                    resultBean.getStoreIcon(),      //网址
+                    mACache,                        //缓存工具
+                    resultBean.getStoreName());     //缓存名称-商户名
+            bindingHeaderView.setResultBean(resultBean);
+        }else{
+            RxToast.info("数据有误");
+            return;
         }
         mACache = ACache.get(this);
-        bindingHeaderView.setResultBean(resultBean);
         setTitle("商户详情");
 //        setSubTitle("");//可选副标题
         initSlideShapeTheme(setHeaderImgUrl(), setHeaderImageView(),setSlideTitle());
-        GlideUtils.readCache(this,
-                bindingHeaderView.ivStoreLogo,            //图片容器
-                resultBean.getStoreIcon(),      //网址
-                mACache,                        //缓存工具
-                resultBean.getStoreName());     //缓存名称-商户名
-
         bindingHeaderView.executePendingBindings();
         showContentView();
         bindingContentView.rlQueue.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
                 startActivity(new Intent(MechantDetail.this, MechantQueue.class));
-
             }
         });
         bindingContentView.btnExit.setOnClickListener(new PerfectClickListener() {
