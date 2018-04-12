@@ -63,7 +63,7 @@ public class MechantAdapter extends BaseRecyclerViewAdapter<ManageBeans.ResultBe
             binding.llMembership.setOnClickListener(new PerfectClickListener() {
                 @Override
                 protected void onNoDoubleClick(View v) {
-                    MechantDetail.start(activity,resultBean,binding.ivStoreLogo);
+//                    MechantDetail.start(activity,resultBean,binding.ivStoreLogo);
                 }
             });
         }
