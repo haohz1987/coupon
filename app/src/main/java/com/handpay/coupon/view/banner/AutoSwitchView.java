@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.handpay.coupon.utils.LogT;
-
 
 /**
  * @author ryze
@@ -27,7 +25,7 @@ public class AutoSwitchView extends AutoLoopSwitchBaseView {
      */
     @Override
     protected void onSwitch(int index, Object object) {
-        LogT.w("onSwitch:index="+index+",Object="+object.toString());
+//        LogT.w("onSwitch:index="+index+",Object="+object.toString());
 //        FragmentHomeBean.AttrBean.BannersBean model = (FragmentHomeBean.AttrBean.BannersBean) object;
 //        if (model != null) {
 //            ImageView imageView = new ImageView(getContext());

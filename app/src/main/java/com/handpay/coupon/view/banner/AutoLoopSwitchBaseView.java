@@ -136,8 +136,8 @@ public abstract class AutoLoopSwitchBaseView extends RelativeLayout implements V
         WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
         LayoutParams params = generalLayoutParams(LayoutParams.WRAP_CONTENT,
-                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, displayMetrics));
-        params.bottomMargin = 10;
+                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 7, displayMetrics));
+        params.bottomMargin = 7;
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL);
         addView(indicateLayout, params);
@@ -152,7 +152,7 @@ public abstract class AutoLoopSwitchBaseView extends RelativeLayout implements V
                 if (indicateLayout != null) {
                     ImageView imageView = (ImageView) indicateLayout.getChildAt(index);
                     //圆点间隔
-                    imageView.setPadding(10, 0, 10, 0);
+                    imageView.setPadding(6, 0, 10, 0);
                     if (currentIndex == index) {
                         imageView.setImageResource(indicate.get(1));
                     } else {

@@ -37,7 +37,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/giv"
-                    android:text="@string/upload_tip" />
+                    android:text="@string/upload_tip"
+                    android:textColor="@color/grey_color"
+                    android:paddingTop="@dimen/dp_4"
+                    android:paddingBottom="@dimen/dp_4"
+                    android:textSize="@dimen/sp_14"
+                    />
             </RelativeLayout>
 
             <View
@@ -218,7 +223,7 @@
                 <TextView
                     android:id="@+id/tv_md_address"
                     style="@style/text_style"
-                    android:text="门店地址" />
+                    android:text="定位地址" />
 
                 <EditText
                     android:id="@+id/et_md_address"
@@ -369,6 +374,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/grey_color" />
+            <TextView
+                android:id="@+id/tv_input_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="@string/input_tip"
+                android:textColor="@color/grey_color"
+                android:textSize="@dimen/sp_14"
+                />
 
             <Button
                 android:id="@+id/btn_upload"

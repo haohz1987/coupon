@@ -27,7 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="bottom"
-
             android:background="@drawable/coupon_check_item_bg"
             android:text="创建门店"
             android:textColor="#fff"

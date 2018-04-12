@@ -28,12 +28,13 @@ public class SplashActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         // 先显示默认图
         mBinding.ivDefultPic.setImageDrawable(CommonUtils.getDrawable(R.mipmap.default_homebg));
+        // TODO: 2018/4/10 正式版改成1500 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mBinding.ivDefultPic.setVisibility(View.GONE);
             }
-        }, 1500);
+        }, 10);
 
         new Handler().postDelayed(new Runnable() {
             @Override

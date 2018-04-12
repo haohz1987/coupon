@@ -2,6 +2,8 @@ package com.handpay.coupon.base;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.Color;
@@ -34,10 +36,14 @@ import com.handpay.coupon.utils.CommonUtils;
 import com.handpay.coupon.utils.PerfectClickListener;
 import com.handpay.coupon.utils.StatusBarUtils;
 import com.handpay.coupon.view.CustomChangeBounds;
+import com.handpay.coupon.view.CustomDialog;
 import com.handpay.coupon.view.MyNestedScrollView;
 import com.handpay.coupon.view.statusbar.StatusBarUtil;
 
 import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import rx.Subscription;
@@ -62,6 +68,7 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
     private int imageBgHeight;
     private AnimationDrawable mAnimationDrawable;
     private CompositeSubscription mCompositeSubscription;
+    protected static CustomDialog dialog;
 
     protected <T extends View> T getView(int id) {
         return (T) findViewById(id);
@@ -318,9 +325,10 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
      */
     private void setImgHeaderBg(String imgUrl) {
         if (!TextUtils.isEmpty(imgUrl)) {
-
-            // 高斯模糊背景 原来 参数：12,5  23,4
-            Glide.with(this).load(imgUrl)
+//            Glide.with(this).load(imgUrl)
+//                    .error(R.mipmap.stackblur_default)
+            // 高斯模糊背景 原来 参数：12,5  23,4,,R.color.login_blue_nomal_top
+            Glide.with(this).load("")
                     .error(R.mipmap.stackblur_default)
                     .bitmapTransform(new BlurTransformation(this, 23, 4))
                     .listener(new RequestListener<String, GlideDrawable>() {
@@ -328,7 +336,6 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
                 public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
                     return false;
                 }
-
                 @Override
                 public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                     bindingTitleView.tbBaseTitle.setBackgroundColor(Color.TRANSPARENT);
@@ -459,5 +466,105 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
         if (this.mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             this.mCompositeSubscription.unsubscribe();
         }
+    }
+    public final void showAlertDialog(Context context, String title, String message, boolean cancelable, DialogInterface.OnClickListener oclOK) {
+        showAlertDialog(context, title, message, cancelable, oclOK, null);
+    }
+    public final void showAlertDialog(Context context, String title, String message, boolean cancelable, DialogInterface.OnClickListener oclOK, DialogInterface.OnClickListener oclCancel) {
+        showAlertDialog(context, title, message, cancelable, oclOK, oclCancel, null, null);
+    }
+    /**
+     * @param context
+     * @param title        标题
+     * @param message      提示信息
+     * @param cancelable   是否可取消
+     * @param oclOK        确定事件
+     * @param oclCancel    取消事件
+     * @param middleButton 中间按钮文字
+     * @param oclMiddle    中间按钮事件
+     */
+    public final void showAlertDialog(Context context, String title, String message, boolean cancelable, DialogInterface.OnClickListener oclOK, DialogInterface.OnClickListener oclCancel, String middleButton, DialogInterface.OnClickListener oclMiddle) {
+        showAlertDialog(context, title, message, cancelable, null, oclOK, null, oclCancel, middleButton, oclMiddle);
+    }
+    // 对话框
+    public final void showAlertDialog(Context context, String title, String message, boolean cancelable, String okString, DialogInterface.OnClickListener oclOK, String cancelString, DialogInterface.OnClickListener oclCancel, String middleButton, DialogInterface.OnClickListener oclMiddle) {
+        class RunnableShowAlertDialog implements Runnable {
+            private Context context;
+            private String title, message, neutral, mOKString, mCancelString;
+            private boolean cancelable;
+            private DialogInterface.OnClickListener oclPositive, oclNeutral, oclNegative;
+            private CustomDialog.Builder builder;
+
+            public RunnableShowAlertDialog(Context context, String title, String message, boolean cancelable, String okString, DialogInterface.OnClickListener oclOK, String cancelString, DialogInterface.OnClickListener oclCancel, String middleButton, DialogInterface.OnClickListener oclMiddle) {
+                this.context = context;
+                this.title = title;
+                this.message = message;
+                this.mOKString = okString;
+                this.mCancelString = cancelString;
+                this.cancelable = cancelable;
+                oclPositive = oclOK;
+                oclNegative = oclCancel;
+                neutral = middleButton;
+                oclNeutral = oclMiddle;
+            }
+
+            @Override
+            public void run() {
+                try {
+                    if (dialog != null && dialog.isShowing()) {
+                        if (builder == null) {
+                            builder = setAlertBuilder(new CustomDialog.Builder(context));
+                        } else {
+                            builder = setAlertBuilder(builder);
+                        }
+                    } else {
+                        builder = setAlertBuilder(new CustomDialog.Builder(context));
+                    }
+                    dialog = builder.create();
+                    dialog.setCanceledOnTouchOutside(cancelable);
+                    dialog.setCancelable(cancelable);
+                    dialog.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            /**
+             * 设置Builder
+             */
+            private CustomDialog.Builder setAlertBuilder(CustomDialog.Builder builder) {
+                builder.setTitle(title);
+                builder.setMessage(stringFilter(message));
+                // 按钮文字为空时，不显示按钮
+                if (TextUtils.isEmpty(mOKString)) {
+                    builder.setPositiveButton(android.R.string.ok, oclPositive);
+                } else {
+                    builder.setPositiveButton(mOKString, oclPositive);
+                }
+                if (oclNeutral != null) {
+                    builder.setNeutralButton(neutral, oclNeutral);
+                }
+                if (oclNegative != null) {
+                    // 取消事件为空，认为是没有取消按钮
+                    if (TextUtils.isEmpty(mCancelString)) {
+                        builder.setNegativeButton(android.R.string.cancel, oclNegative);
+                    } else {
+                        builder.setNegativeButton(mCancelString, oclNegative);
+                    }
+                }
+                return builder;
+            }
+        }
+        this.runOnUiThread(new RunnableShowAlertDialog(context, title, message, cancelable, okString, oclOK, cancelString, oclCancel, middleButton, oclMiddle));
+    }
+    /**
+     * 替换、过滤特殊字符
+     */
+    public static String stringFilter(String str) throws PatternSyntaxException {
+        str = str.replaceAll("【", "[").replaceAll("】", "]").replaceAll("！", "!").replaceAll("，", ",").replaceAll("&", "\n");//替换中文标号
+        String regEx = "[『』]"; // 清除掉特殊字符
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.replaceAll("").trim();
     }
 }

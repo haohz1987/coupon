@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
 
@@ -93,5 +93,16 @@
         <item name="android:scaleType">centerInside</item>
         <item name="android:src">@mipmap/ic_clear</item>
         <item name="android:visibility">gone</item>
+    </style>
+    <!--自定义提示对话框样式-->
+    <style name="MyAlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/shape_dialog_bg</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
+        <item name="android:colorBackground">@android:color/white</item>
     </style>
 </resources>

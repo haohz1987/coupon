@@ -11,15 +11,19 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
+import com.handpay.coupon.bean.GetPoiBackBean;
 import com.handpay.coupon.bean.PoiListBean;
 import com.handpay.coupon.databinding.FragmentMechantBinding;
 import com.handpay.coupon.ui.activity.MainActivity;
-import com.handpay.coupon.ui.activity.UploadImage;
+import com.handpay.coupon.ui.activity.BranchInfo;
+import com.handpay.coupon.ui.adapter.MechantDetail;
 import com.handpay.coupon.ui.adapter.PoiListAdapter;
 import com.handpay.coupon.utils.ACache;
 import com.handpay.coupon.utils.AssetsUtil;
 import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.RxToast;
+
+import java.util.ArrayList;
 
 /**
  * Created by haohz on 2018/2/2.
@@ -54,7 +58,7 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
             public void doStoreClick(int available_state,String poi_id) {
                 if (available_state == 3){
                     RxToast.info("根据商户号，查询商户详情:"+poi_id);
-
+                    getPoiBack();
                 }else
                     RxToast.info("修改或查看门店信息");
             }
@@ -65,7 +69,7 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
         bindingView.btnCreate.setOnClickListener(new DebouncingOnClickListener() {
             @Override
             public void doClick(View v) {
-                activity.startActivity(new Intent(activity, UploadImage.class));
+                activity.startActivity(new Intent(activity, BranchInfo.class));
             }
         });
     }
@@ -157,6 +161,22 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
 
     }
 
+    private void getPoiBack() {
+        String temp = AssetsUtil.loadlocalData(activity, "getPoiBack.json");
+        if (TextUtils.isEmpty(temp)) {
+            RxToast.info("获取temp失败："+temp);
+            return ;
+        }
+        ArrayList<GetPoiBackBean>  arrayList = new ArrayList<>();
+        GetPoiBackBean getPoiBackBean = new Gson().fromJson(temp,GetPoiBackBean.class);
+        arrayList.add(getPoiBackBean);
+//        LogT.w("arrayList="+arrayList.toString());
+        Intent intent = new Intent(activity, MechantDetail.class);
+        intent.putExtra("getPoiBack",getPoiBackBean);
+//        intent.putParcelableArrayListExtra("getPoiBack",arrayList);
+        activity.startActivity(intent);
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -181,6 +201,7 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
             bindingView.getRoot().setVisibility(View.VISIBLE);
         }
     }
+
 //    public void intentDetail(){
 //        Intent intent = new Intent(activity,MainActivity.class);
 //        startActivity(intent);

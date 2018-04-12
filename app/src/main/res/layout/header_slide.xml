@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="resultBean"
-            type="com.handpay.coupon.bean.ManageBeans.ResultBean" />
+            name="baseInfoBean"
+            type="com.handpay.coupon.bean.GetPoiBackBean.BusinessBean.BaseInfoBean" />
     </data>
 
     <RelativeLayout
@@ -16,7 +16,8 @@
         <ImageView
             android:id="@+id/img_item_bg"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
+            android:minHeight="350dp"
             android:background="@color/login_blue_nomal_top"
             android:scaleType="fitXY" />
 
@@ -39,45 +40,53 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="@dimen/dp_10">
 
                 <TextView
-                    android:id="@+id/tv_store_name"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_business_name"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{resultBean.storeName}"
-                    android:textSize="14sp" />
+                    android:text="@{baseInfoBean.business_name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
-                    android:id="@+id/tv_store_discount"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_branch_name"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="到店优惠9折起"
-                    android:textSize="14sp" />
+                    android:text="@{baseInfoBean.branch_name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
-                    android:id="@+id/tv_consume"
+                    android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="￥20/人      湘菜"
-                    android:textColor="@color/red_color"
-                    android:textSize="14sp" />
+                    android:text="@{baseInfoBean.address}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16" />
 
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_telephone"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@{baseInfoBean.telephone}"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:textSize="@dimen/sp_16" />-->
                 <TextView
-                    android:id="@+id/tv_explain"
+                    android:id="@+id/tv_categories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@{resultBean.explain}"
-                    android:textSize="14sp" />
+                    android:text="@{baseInfoBean.categoriesString}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -23,6 +23,11 @@
             app:layout_scrollFlags="enterAlways|scroll"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ToolbarStyle">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
 
         </android.support.v7.widget.Toolbar>
 

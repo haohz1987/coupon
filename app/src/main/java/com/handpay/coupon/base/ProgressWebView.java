@@ -1,6 +1,7 @@
 package com.handpay.coupon.base;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ public class ProgressWebView extends RelativeLayout {
      *
      * @param aContext current context
      */
+    @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView(Context aContext) {
         RelativeLayout webview_container = findViewById(R.id.webview_container);

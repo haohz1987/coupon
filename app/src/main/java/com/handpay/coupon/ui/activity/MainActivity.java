@@ -168,13 +168,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void doClick(View v) {
                     //http://api.map.baidu.com/geocoder?address=北京市海淀区上地信息路9号奎科科技大厦&output=html&src=yourCompanyName|yourAppName
                     String url = BaseKey.BAIDU_MAP_MARKER_URL + "location=" + mACache.getAsObject(BaseKey.KEY_LATITUDE) + "," +
-                            mACache.getAsObject(BaseKey.KEY_LONGTITUDE) + "&title="+mACache.getAsString(BaseKey.KEY_POSITION)+"&content=" + mACache.getAsString(BaseKey.KEY_ADDRESS)+
-                            "&output=html&src="+getString(R.string.app_name);
+                            mACache.getAsObject(BaseKey.KEY_LONGTITUDE) + "&title=" + mACache.getAsString(BaseKey.KEY_POSITION) + "&content=" + mACache.getAsString(BaseKey.KEY_ADDRESS) +
+                            "&output=html&src=" + getString(R.string.app_name);
                     Intent intent = new Intent();
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("URL_WEB", url);
-                    intent.putExtra("TITLE", "我的位置");
-                    intent.setClass(MainActivity.this, WebActivity.class);
+                    /* 原生位置 */
+                    intent.putExtra("KEY_LATITUDE",(double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
+                    intent.putExtra("KEY_LONGTITUDE",(double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
+                    intent.setClass(MainActivity.this,MapActivity.class);
+
+                    /* H5网页位置 */
+//                    intent.putExtra("URL_WEB", url);
+//                    intent.putExtra("TITLE", "我的位置");
+//                    intent.setClass(MainActivity.this, WebActivity.class);
+
                     startActivityForResult(intent, RESULT_OK);
                 }
             });
@@ -330,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                ClientEngine.getInstance().saveGlobal(BaseKey.KEY_LATITUDE,location.getLatitude());
 //                ClientEngine.getInstance().saveGlobal(BaseKey.KEY_LONGTITUDE,location.getLongitude());
                 mACache.put(BaseKey.KEY_ADDRESS, location.getAddrStr());
-                mACache.put(BaseKey.KEY_POSITION,location.getPoiList().get(0).getName());
+                mACache.put(BaseKey.KEY_POSITION, location.getPoiList().get(0).getName());
                 mACache.put(BaseKey.KEY_LATITUDE, location.getLatitude());
                 mACache.put(BaseKey.KEY_LONGTITUDE, location.getLongitude());
                 LogT.w(location.getAddrStr() + ",Latitude=" + location.getLatitude() + ",Longitude=" + location.getLongitude());
