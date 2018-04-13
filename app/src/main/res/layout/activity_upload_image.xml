@@ -217,6 +217,8 @@
                 android:id="@+id/ll_md_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:minHeight="@dimen/dp_45"
                 android:orientation="horizontal">
 
@@ -225,9 +227,11 @@
                     style="@style/text_style"
                     android:text="定位地址" />
 
+
                 <EditText
                     android:id="@+id/et_md_address"
                     style="@style/edit_text_style"
+                    android:drawableRight="@drawable/titlebar_local"
                     android:hint="请定位门店地址" />
 
                 <ImageView

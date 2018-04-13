@@ -219,7 +219,7 @@ public class GetPoiBackBean implements Serializable{
             }
 
             public String getTelephone() {
-                return "订餐电话:"+telephone;
+                return telephone;//"订餐电话:"+
             }
 
             public void setTelephone(String telephone) {

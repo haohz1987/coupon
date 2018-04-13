@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseActivity;
+import com.handpay.coupon.base.BaseKey;
 import com.handpay.coupon.databinding.ActivityUploadImageBinding;
 import com.handpay.coupon.takephoto.TakePhoto;
 import com.handpay.coupon.takephoto.TakePhotoImpl;
@@ -69,19 +70,32 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
 
-        if(isFullScreen(this)){
+        if (isFullScreen(this)) {
             AndroidBug5497Workaround.assistActivity(this);
         }
         isCropable = Build.MODEL.equals("Nexus 5") || Build.MODEL.equals("Lenovo Z2");
         showContentView();
 
-        if(getIntent()!=null && getIntent().getSerializableExtra("baseInfoBean")!=null){
+        if (getIntent() != null && getIntent().getSerializableExtra("baseInfoBean") != null) {
             modifyBranchInfo();
-        }else{
+        } else {
             createBranch();
         }
         mACache = ACache.get(this);
         mGiv = findViewById(R.id.giv);
+        bindingView.etMdAddress.setFocusable(false);
+        bindingView.llMdAddress.setClickable(true);
+        bindingView.llMdAddress.setOnClickListener(new DebouncingOnClickListener() {
+            @Override
+            public void doClick(View v) {
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("KEY_LATITUDE", (double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
+                intent.putExtra("KEY_LONGTITUDE", (double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
+                intent.setClass(BranchInfo.this, MapActivity.class);
+            }
+        });
+
         mGiv.setAdapter(new GridImageViewAdapter<TImage>() {
             @Override
             protected void onDisplayImage(Context context, ImageView imageView, TImage path) {
@@ -118,7 +132,6 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
                 RxToast.info("调用创建门店接口");
 //                    startActivity(new Intent(BranchInfo.this, BusinessInfo.class));
 //                    finish();
-
             }
         });
     }

@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         mContext = this;
         mACache = ACache.get(this);
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         // 设置透明状态栏
         StatusBarUtil.setColor(this, CommonUtils.getColor(R.color.login_blue_nomal_top), 0);
@@ -173,14 +174,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent();
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     /* 原生位置 */
-                    intent.putExtra("KEY_LATITUDE",(double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
-                    intent.putExtra("KEY_LONGTITUDE",(double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
-                    intent.setClass(MainActivity.this,MapActivity.class);
+//                    intent.putExtra("KEY_LATITUDE", (double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
+//                    intent.putExtra("KEY_LONGTITUDE", (double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
+//                    intent.setClass(MainActivity.this, MapActivity.class);
 
                     /* H5网页位置 */
-//                    intent.putExtra("URL_WEB", url);
-//                    intent.putExtra("TITLE", "我的位置");
-//                    intent.setClass(MainActivity.this, WebActivity.class);
+                    intent.putExtra("URL_WEB", url);
+                    intent.putExtra("TITLE", "我的位置");
+                    intent.setClass(MainActivity.this, WebActivity.class);
 
                     startActivityForResult(intent, RESULT_OK);
                 }
@@ -338,16 +339,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                ClientEngine.getInstance().saveGlobal(BaseKey.KEY_LONGTITUDE,location.getLongitude());
                 mACache.put(BaseKey.KEY_ADDRESS, location.getAddrStr());
                 mACache.put(BaseKey.KEY_POSITION, location.getPoiList().get(0).getName());
-                mACache.put(BaseKey.KEY_LATITUDE, location.getLatitude());
-                mACache.put(BaseKey.KEY_LONGTITUDE, location.getLongitude());
-                LogT.w(location.getAddrStr() + ",Latitude=" + location.getLatitude() + ",Longitude=" + location.getLongitude());
+                mACache.put(BaseKey.KEY_LATITUDE, CommonUtils.to8EffectiveNo(location.getLatitude()));
+                mACache.put(BaseKey.KEY_LONGTITUDE, CommonUtils.to8EffectiveNo(location.getLongitude()));
+                LogT.w(location.getAddrStr() + ",Latitude=" + CommonUtils.to8EffectiveNo(location.getLatitude())
+                        + ",Longitude=" + CommonUtils.to8EffectiveNo(location.getLongitude()));
                 // http://api.map.baidu.com/marker?location=39.916979519873,116.41004950566&title=我的位置&content=百度奎科大厦&output=html
                 locationService.stop(); //停止定位服务
-
-
             }
         }
-
     };
 
     public void logMsg(String address, String sb) {

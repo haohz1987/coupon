@@ -1,6 +1,7 @@
 package com.handpay.coupon.ui.activity;
 
 import android.os.Bundle;
+
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -14,6 +15,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseActivity;
 import com.handpay.coupon.databinding.ActivityMapBinding;
+import com.handpay.coupon.utils.CommonUtils;
 import com.handpay.coupon.utils.LogT;
 
 /**
@@ -37,7 +39,7 @@ public class MapActivity extends BaseActivity<ActivityMapBinding> {
         setTitle("手动定位");
         // 获取地图控件引用
         mMapView = findViewById(R.id.bmapView);
-        bindingView.bmapView.getMap();
+
         mBaiduMap = mMapView.getMap();
         //设置是否显示比例尺控件
         mMapView.showScaleControl(true);
@@ -53,7 +55,8 @@ public class MapActivity extends BaseActivity<ActivityMapBinding> {
             mBaiduMap.clear();
             latitude = getIntent().getDoubleExtra("KEY_LATITUDE",31.253898);
             longitude = getIntent().getDoubleExtra("KEY_LONGTITUDE",121.45987);
-            LogT.w("当前默认的额经纬度为，（"+latitude+","+longitude+")");
+            bindingView.tvTip.setText("当前位置:("+latitude+","+longitude+")");
+            LogT.w("当前默认的额经纬度为,("+latitude+","+longitude+")");
             // 定义Maker坐标点
             LatLng point = new LatLng(latitude, longitude);
             // 构建MarkerOption，用于在地图上添加Marker
@@ -67,11 +70,8 @@ public class MapActivity extends BaseActivity<ActivityMapBinding> {
             //设置经纬度（参数一是纬度，参数二是经度）
             MapStatusUpdate mapstatusupdate =  MapStatusUpdateFactory.newLatLng(new LatLng(latitude,longitude));
             mBaiduMap.setMapStatus(mapstatusupdate); //对地图的中心点进行更新，
-
         }
-
         mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
-
             @Override
             public boolean onMapPoiClick(MapPoi arg0) {
                 // TODO Auto-generated method stub
@@ -83,9 +83,10 @@ public class MapActivity extends BaseActivity<ActivityMapBinding> {
             @Override
             public void onMapClick(LatLng latLng) {
                 //获取经纬度
-                latitude = latLng.latitude;
-                longitude = latLng.longitude;
+                latitude = CommonUtils.to8EffectiveNo(latLng.latitude);
+                longitude = CommonUtils.to8EffectiveNo(latLng.longitude);
                 LogT.w("点击地图监听:latitude="+ latitude +",longitude="+ longitude);
+                bindingView.tvTip.setText("当前位置:("+latitude+","+longitude+")");
                 mBaiduMap.clear();
                 LatLng point = new LatLng(latitude, longitude);
                 MarkerOptions options = new MarkerOptions().position(point)

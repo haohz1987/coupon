@@ -16,17 +16,19 @@
         <ImageView
             android:id="@+id/img_item_bg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="350dp"
+            android:layout_height="300dp"
             android:background="@color/login_blue_nomal_top"
             android:scaleType="fitXY" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
             android:paddingTop="91dp"
             android:background="@android:color/transparent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
 
             <ImageView
                 android:id="@+id/iv_store_logo"

@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,17 @@ public class CommonUtils {
         Date date = new Date();
         SimpleDateFormat dateFm = new SimpleDateFormat("dd");
         return dateFm.format(date);
+    }
+    public static double to8EffectiveNo(Double doub){
+        if(TextUtils.isEmpty(""+doub))return 0.00;
+        String str = String.valueOf(doub);
+        String strSub = "";
+        String[] strings = str.split("\\.");
+        strSub = str;
+        if((strings[1].length()+strings[0].length())>8){
+            strSub = strings[0]+"."+strings[1].substring(0,8-strings[0].length());
+        }
+        return Double.parseDouble(strSub);
     }
 
     /**

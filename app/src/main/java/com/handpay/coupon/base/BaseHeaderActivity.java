@@ -116,17 +116,11 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
 
         // 设置自定义元素共享切换动画
         setMotion(setHeaderPicView(),false);
-
         // 初始化滑动渐变
         initSlideShapeTheme(setHeaderImgUrl(), setHeaderImageView(),setSlideTitle());
-
-
-
         // 设置toolbar
         setToolBar();
-
         ImageView img = getView(R.id.img_progress);
-
         // 加载动画
         mAnimationDrawable = (AnimationDrawable) img.getDrawable();
         // 默认进入页面就开启动画
@@ -142,9 +136,7 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
             }
         });
         bindingContentView.getRoot().setVisibility(View.GONE);
-
     }
-
 
     /**
      * a. 布局高斯透明图 header布局
