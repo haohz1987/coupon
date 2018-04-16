@@ -375,11 +375,12 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
         if (scrolledY <= slidingDistance) {
             // title部分的渐变
             drawable.mutate().setAlpha((int) (alpha * 255));
-            bindingTitleView.tbBaseTitle.setTitle("商户详情");
+            bindingTitleView.tbBaseTitle.setTitle("我的门店");
             bindingTitleView.ivBaseTitlebarBg.setImageDrawable(drawable);
         } else {
             drawable.mutate().setAlpha(255);
             bindingTitleView.tbBaseTitle.setTitle(slideTitle);
+
             bindingTitleView.ivBaseTitlebarBg.setImageDrawable(drawable);
         }
     }

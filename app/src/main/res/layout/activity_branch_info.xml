@@ -226,17 +226,32 @@
                     android:id="@+id/tv_md_address"
                     style="@style/text_style"
                     android:text="定位地址" />
-
-
-                <EditText
-                    android:id="@+id/et_md_address"
-                    style="@style/edit_text_style"
-                    android:drawableRight="@drawable/titlebar_local"
-                    android:hint="请定位门店地址" />
-
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:text="经纬度地址,默认为当前位置"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@android:color/darker_gray"/>
                 <ImageView
-                    android:id="@+id/iv_md_address"
-                    style="@style/image_view_style" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/titlebar_local"/>
+
+
+                <!--<EditText-->
+                    <!--android:id="@+id/et_md_address"-->
+                    <!--style="@style/edit_text_style"-->
+                    <!--android:drawableRight="@drawable/titlebar_local"-->
+                    <!--android:hint="请定位门店地址" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_md_address"-->
+                    <!--style="@style/image_view_style" />-->
             </LinearLayout>
 
             <View

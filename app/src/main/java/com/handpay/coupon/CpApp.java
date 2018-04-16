@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.handpay.coupon.baidu.LocationService;
+import com.handpay.coupon.db.DbCore;
 import com.handpay.coupon.utils.LogT;
 
 /**
@@ -30,6 +31,7 @@ public class CpApp extends Application {
         super.onCreate();
         cpApp = this;
         mContext = getApplicationContext();
+        DbCore.init(this);
         LogT.init(true, Log.VERBOSE);//不输出到文件
 //        Thread.setDefaultUncaughtExceptionHandler(new CustomerExceptionHandler());
 
@@ -39,5 +41,4 @@ public class CpApp extends Application {
         SDKInitializer.initialize(getApplicationContext());
 
     }
-
 }

@@ -1,5 +1,6 @@
 package com.handpay.coupon.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -22,7 +23,8 @@ import android.widget.Toast;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseActivity;
 import com.handpay.coupon.base.BaseKey;
-import com.handpay.coupon.databinding.ActivityUploadImageBinding;
+import com.handpay.coupon.bean.GetPoiBackBean;
+import com.handpay.coupon.databinding.ActivityBranchInfoBinding;
 import com.handpay.coupon.takephoto.TakePhoto;
 import com.handpay.coupon.takephoto.TakePhotoImpl;
 import com.handpay.coupon.takephoto.compress.CompressConfig;
@@ -53,7 +55,7 @@ import java.util.List;
 
 import static android.graphics.Bitmap.CompressFormat.JPEG;
 
-public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> implements TakePhoto.TakeResultListener, InvokeListener {
+public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implements TakePhoto.TakeResultListener, InvokeListener {
 
     private GridImageView<TImage> mGiv;
     private TakePhoto takePhoto;
@@ -63,12 +65,12 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
     public static final int UPLOAD_IMAGE = 110;
     private ArrayList<TImage> images;
     private boolean isCropable = false;//是否使用裁剪,Nexus 5,Lenovo Z2使用原生的裁剪工具
-
+    private GetPoiBackBean.BusinessBean.BaseInfoBean baseInfoBean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getTakePhoto().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_image);
+        setContentView(R.layout.activity_branch_info);
 
         if (isFullScreen(this)) {
             AndroidBug5497Workaround.assistActivity(this);
@@ -77,22 +79,25 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
         showContentView();
 
         if (getIntent() != null && getIntent().getSerializableExtra("baseInfoBean") != null) {
+            baseInfoBean = (GetPoiBackBean.BusinessBean.BaseInfoBean)getIntent().getSerializableExtra("baseInfoBean");
             modifyBranchInfo();
         } else {
             createBranch();
         }
         mACache = ACache.get(this);
         mGiv = findViewById(R.id.giv);
-        bindingView.etMdAddress.setFocusable(false);
-        bindingView.llMdAddress.setClickable(true);
         bindingView.llMdAddress.setOnClickListener(new DebouncingOnClickListener() {
             @Override
             public void doClick(View v) {
+                LogT.w("跳转手机定位");
                 Intent intent = new Intent();
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("KEY_LATITUDE", (double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
-                intent.putExtra("KEY_LONGTITUDE", (double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
+                Bundle bundle = new Bundle();
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                bundle.putDouble(BaseKey.KEY_LATITUDE, (double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
+                bundle.putDouble(BaseKey.KEY_LONGTITUDE, (double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
+                intent.putExtras(bundle);
                 intent.setClass(BranchInfo.this, MapActivity.class);
+                startActivityForResult(intent,101);
             }
         });
 
@@ -121,7 +126,6 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
                 Toast.makeText(getApplicationContext(), "--->" + index, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void createBranch() {
@@ -138,13 +142,16 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
 
     private void modifyBranchInfo() {
         setTitle("修改门店信息");
+        bindingView.etBusinessName.setText(baseInfoBean.getBusiness_name());
+        bindingView.etBranchName.setText(baseInfoBean.getBranch_name());
+        bindingView.etBusinessName.setEnabled(false);
+        bindingView.etBranchName.setEnabled(false);
         bindingView.btnUpload.setOnClickListener(new DebouncingOnClickListener() {
             @Override
             public void doClick(View v) {
                 RxToast.info("调用修改门店接口");
 //                    startActivity(new Intent(BranchInfo.this, BusinessInfo.class));
 //                    finish();
-
             }
         });
     }
@@ -154,11 +161,11 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
                 WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         getTakePhoto().onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK) return;
         switch (requestCode) {
             case UPLOAD_IMAGE:
                 LogT.w("mgiv_setImageData");
@@ -167,6 +174,15 @@ public class BranchInfo extends BaseActivity<ActivityUploadImageBinding> impleme
 //                //  PictureUtil.cropPhoto(this, Uri.parse("file://"+list.get(0)));
 //                mGiv.setImageData(images, false);
 //                List<TImage> l = mGiv.getImgDataList();
+                break;
+            case 101:
+                LogT.w("调用MapActivity的回调");
+                if(data!=null){
+                    Bundle bundle = data.getExtras();
+                    bindingView.tvLocation.setTextColor(getResources().getColor(R.color.black));
+                    bindingView.tvLocation.setText("(" + bundle.getDouble(BaseKey.KEY_LATITUDE,(double)mACache.getAsObject(BaseKey.KEY_LATITUDE))
+                            + "," + bundle.getDouble(BaseKey.KEY_LONGTITUDE,(double)mACache.getAsObject(BaseKey.KEY_LONGTITUDE)) + ")");
+                }
                 break;
         }
     }

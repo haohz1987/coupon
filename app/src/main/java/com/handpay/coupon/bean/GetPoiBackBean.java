@@ -179,7 +179,7 @@ public class GetPoiBackBean implements Serializable{
             }
 
             public String getBusiness_name() {
-                return "门  店:"+business_name;
+                return business_name;
             }
 
             public void setBusiness_name(String business_name) {
@@ -187,7 +187,7 @@ public class GetPoiBackBean implements Serializable{
             }
 
             public String getBranch_name() {
-                return "分  店:"+branch_name;
+                return branch_name;
             }
 
             public void setBranch_name(String branch_name) {

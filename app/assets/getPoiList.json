@@ -11,27 +11,36 @@
       "available_state":1
     }},
     {"base_info":{
-      "sid":"100",
-      "poi_id":"271864249",
+      "sid":"101",
+      "poi_id":"271864250",
       "business_name":"川菜",
       "branch_name":"复原路店",
       "address":"复原路路11 号",
       "available_state":2
     }},
     {"base_info":{
-      "sid":"100",
-      "poi_id":"271864249",
+      "sid":"102",
+      "poi_id":"271864251",
       "business_name":"麦当劳",
       "branch_name":"艺苑路店",
       "address":"艺苑路11 号",
       "available_state":3
     }},
     {"base_info":{
-      "sid":"101",
+      "sid":"103",
       "business_name":"麦当劳",
       "branch_name":"赤岗路店",
       "address":"赤岗路102 号",
       "available_state":4
-    }}],
+    }},
+    {"base_info":{
+      "sid":"104",
+      "poi_id":"271864252",
+      "business_name":"肯德基",
+      "branch_name":"中山公园店",
+      "address":"中山公园路11 号",
+      "available_state":3
+    }}
+  ],
   "total_count":"4"
 }
