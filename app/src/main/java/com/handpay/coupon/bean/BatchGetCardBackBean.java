@@ -19,6 +19,21 @@ public class BatchGetCardBackBean {
     private int total_num;
     private List<String> card_id_list;
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"total_num\":")
+                .append(total_num);
+        sb.append(",\"errmsg\":\"")
+                .append(errmsg).append('\"');
+        sb.append(",\"errcode\":")
+                .append(errcode);
+        sb.append(",\"card_id_list\":")
+                .append(card_id_list);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public int getErrcode() {
         return errcode;
     }

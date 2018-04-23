@@ -26,6 +26,7 @@ public class AssetsUtil {
             }
             return stringBuffer.toString();
         } catch (IOException e) {
+            LogT.w("assertsJson 解析错误_"+e.getMessage());
             return null;
         }
     }

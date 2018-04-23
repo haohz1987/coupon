@@ -12,7 +12,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
  */
 
 public class DbCore {
-    private static final String DEFAULT_DB_NAME = "storeData.db";
+    private static final String DEFAULT_DB_NAME = "couponData.db";
     private static DaoMaster daoMaster;
     private static DaoSession daoSession;
 
@@ -33,9 +33,10 @@ public class DbCore {
 
     public static DaoMaster getDaoMaster() {
         if (daoMaster == null) {
-            //此处不可用 DaoMaster.DevOpenHelper, 那是开发辅助类，我们要自定义一个，方便升级
+            //此处不能直接用 DaoMaster.DevOpenHelper, 那是开发辅助类，我们要自定义一个，方便升级
             DaoMaster.OpenHelper helper = new MyOpenHelper(mContext, DB_NAME);
-            daoMaster = new DaoMaster(helper.getEncryptedReadableDb("123456"));//数据加密
+            daoMaster = new DaoMaster(helper.getWritableDb());
+//            daoMaster = new DaoMaster(helper.getEncryptedReadableDb("123456"));//数据加密
         }
         return daoMaster;
     }

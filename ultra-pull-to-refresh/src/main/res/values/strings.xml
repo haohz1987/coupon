@@ -1,0 +1,20 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation"
+    >
+    <string name="app_name">瀚银钱包</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="loading_view_click_loading_more">点击加载更多</string>
+    <string name="loading_view_no_more">没有更多了</string>
+    <string name="loading_view_loading">加载中…</string>
+    <string name="loading_view_net_error">网路异常，点击重试</string>
+<!--recyclerView-->
+    <string name="msg_load_more_loading">加载中，请稍候&#8230;</string>
+    <string name="msg_load_more_loaded_no_more">没有更多了</string>
+    <string name="msg_load_more_error">加载失败，点击重试</string>
+    <string name="fous">关注</string>
+    <string name="jubao">举报</string>
+
+</resources>

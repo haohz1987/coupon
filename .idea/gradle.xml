@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/http" />
             <option value="$PROJECT_DIR$/lib-zxing" />
+            <option value="$PROJECT_DIR$/ultra-pull-to-refresh" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

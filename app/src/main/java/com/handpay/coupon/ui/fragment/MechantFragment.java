@@ -57,7 +57,6 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
             @Override
             public void doStoreClick(int available_state,String poi_id) {
                 if (available_state == 3){
-                    RxToast.info("根据商户号，查询商户详情:"+poi_id);
                     getPoiBack();
                 }else
                     RxToast.info("修改或查看门店信息");
@@ -106,12 +105,12 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
         bindingView.listOne.setPullRefreshEnabled(false);
         bindingView.listOne.clearHeader();
 
-        bindingView.listOne.setLoadingMoreEnabled(false);
+        bindingView.listOne.setLoadingMoreEnabled(true);
         // 不加滑动不流畅
         bindingView.listOne.setNestedScrollingEnabled(false);
         bindingView.listOne.setHasFixedSize(false);
 
-//        if (mHeaderView == null) {
+//      if (mHeaderView == null) {
 //            mHeaderView = View.inflate(getContext(), R.layout.layout_mechant_search, null);
 ////            View llMovieTop = mHeaderView.findViewById(R.id.ll_movie_top);
 ////            ImageView ivImg = (ImageView) mHeaderView.findViewById(R.id.iv_img);
@@ -122,8 +121,8 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
 ////                    DoubanTopActivity.start(v.getContext());
 ////                }
 ////            });
-//        }
-//        bindingView.listOne.addHeaderView(mHeaderView);
+//      }
+//      bindingView.listOne.addHeaderView(mHeaderView);
         getMechantList();
         bindingView.listOne.setAdapter(poiListAdapter);
         poiListAdapter.notifyDataSetChanged();
@@ -182,29 +181,4 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
         super.onAttach(context);
         activity = (MainActivity) context;
     }
-
-    /**
-     * 加载完成的状态
-     */
-    protected void showContentView() {
-        if (mLlProgressBar.getVisibility() != View.GONE) {
-            mLlProgressBar.setVisibility(View.GONE);
-        }
-        // 停止动画
-        if (mAnimationDrawable.isRunning()) {
-            mAnimationDrawable.stop();
-        }
-        if (mRefresh.getVisibility() != View.GONE) {
-            mRefresh.setVisibility(View.GONE);
-        }
-        if (bindingView.getRoot().getVisibility() != View.VISIBLE) {
-            bindingView.getRoot().setVisibility(View.VISIBLE);
-        }
-    }
-
-//    public void intentDetail(){
-//        Intent intent = new Intent(activity,MainActivity.class);
-//        startActivity(intent);
-//    }
-
 }

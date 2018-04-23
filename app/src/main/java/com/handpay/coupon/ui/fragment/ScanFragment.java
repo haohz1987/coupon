@@ -36,12 +36,13 @@ public class ScanFragment extends BaseFragment<FragmentCouponSelectBinding> impl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        hideKeyboard();
         showContentView();
-
         initView();
 
 //        preferentialAmount = bindingView.etPreferentialAmount.getText().toString().trim();
-//        bindingView.etPreferentialAmount.setText("2.00");
+        bindingView.etPreferentialAmount.setText("2.00");
+        bindingView.etPreferentialAmount.setTextColor(getResources().getColor(android.R.color.black));
 
     }
 

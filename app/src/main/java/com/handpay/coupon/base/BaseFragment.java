@@ -1,6 +1,7 @@
 package com.handpay.coupon.base;
 
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.drawable.AnimationDrawable;
@@ -10,6 +11,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -186,7 +189,16 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment{
         }
         this.mCompositeSubscription.add(s);
     }
-
+    /**
+     * 隐藏软键盘
+     */
+    public void hideKeyboard() {
+        InputMethodManager manager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (getActivity().getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
+            if (getActivity().getCurrentFocus() != null)
+                manager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

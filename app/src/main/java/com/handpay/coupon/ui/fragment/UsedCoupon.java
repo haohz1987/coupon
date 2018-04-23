@@ -79,11 +79,11 @@ public class UsedCoupon extends BaseFragment<FragmentRecycleBinding> {
         // 下拉出提示不会产生出现刷新头的bug，不加拉不下来
         bindingView.listOne.setPullRefreshEnabled(false);
         bindingView.listOne.clearHeader();
-
-        bindingView.listOne.setLoadingMoreEnabled(false);
+        bindingView.listOne.setLoadingMoreEnabled(true);
         // 不加滑动不流畅
         bindingView.listOne.setNestedScrollingEnabled(false);
         bindingView.listOne.setHasFixedSize(false);
+
         getMechantList();
         bindingView.listOne.setAdapter(couponAdapter);
         couponAdapter.notifyDataSetChanged();

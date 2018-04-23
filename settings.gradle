@@ -1,1 +1,1 @@
-include ':app', ':http', ':lib-zxing'
+include ':app', ':http', ':lib-zxing',':ultra-pull-to-refresh'

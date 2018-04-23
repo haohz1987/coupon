@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 mBinding.ivDefultPic.setVisibility(View.GONE);
             }
-        }, 10);
+        }, 100);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -51,10 +51,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void toMain() {
-        if (isIn) {
-            return;
-        }
-        Intent intent = new Intent(this, MainActivity.class);
+        if (isIn) return;
+        Intent intent = new Intent(this, MainActivity.class);//LoginActivity
         startActivity(intent);
         overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out);
         finish();

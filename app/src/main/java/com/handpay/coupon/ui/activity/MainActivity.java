@@ -39,11 +39,7 @@ import com.handpay.coupon.view.statusbar.StatusBarUtil;
 
 import java.util.ArrayList;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -70,34 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initId();
         initRxBus();//顶部标题栏切换
         initContentFragment();
-        Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                subscriber.onCompleted();
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-
-                    }
-                });
 
     }
 
@@ -173,16 +141,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             "&output=html&src=" + getString(R.string.app_name);
                     Intent intent = new Intent();
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    /* 原生位置 */
-//                    intent.putExtra("KEY_LATITUDE", (double) mACache.getAsObject(BaseKey.KEY_LATITUDE));
-//                    intent.putExtra("KEY_LONGTITUDE", (double) mACache.getAsObject(BaseKey.KEY_LONGTITUDE));
-//                    intent.setClass(MainActivity.this, MapActivity.class);
-
                     /* H5网页位置 */
                     intent.putExtra("URL_WEB", url);
                     intent.putExtra("TITLE", "我的位置");
                     intent.setClass(MainActivity.this, WebActivity.class);
-
                     startActivityForResult(intent, RESULT_OK);
                 }
             });

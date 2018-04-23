@@ -20,7 +20,7 @@
 
     <string name="startlocation">开始定位</string>
     <string name="stoplocation">停止定位</string>
-    <string name="show_tip">展示图片</string>
+    <string name="show_tip">图集</string>
     <string name="upload_tip">支持JPG格式,第一张推片为门店logo,推荐比例340*640，其他为展示图片，推荐比例640*340</string>
     <string name="upload_tv_tip">点击此处选择展示图片</string>
     <string name="upload">下一步</string>

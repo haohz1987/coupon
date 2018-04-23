@@ -81,6 +81,8 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity android:name=".ui.activity.LockActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.FlowTagActivity"
+            android:screenOrientation="portrait" />
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -17,6 +17,19 @@ public class GetCardBackBean {
     private String errmsg;
     private CardBean card;
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"errmsg\":\"")
+                .append(errmsg).append('\"');
+        sb.append(",\"errcode\":")
+                .append(errcode);
+        sb.append(",\"card\":")
+                .append(card);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public int getErrcode() {
         return errcode;
     }
@@ -50,6 +63,17 @@ public class GetCardBackBean {
         private String card_type;
         private GrouponBean groupon;
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("{");
+            sb.append("\"groupon\":")
+                    .append(groupon);
+            sb.append(",\"card_type\":\"")
+                    .append(card_type).append('\"');
+            sb.append('}');
+            return sb.toString();
+        }
+
         public String getCard_type() {
             return card_type;
         }
@@ -65,6 +89,7 @@ public class GetCardBackBean {
         public void setGroupon(GrouponBean groupon) {
             this.groupon = groupon;
         }
+
 
         public static class GrouponBean {
             /**
@@ -85,12 +110,276 @@ public class GetCardBackBean {
              欢乐畅饮2 位12 元
              自助酱料2 位10 元
              */
-
             private BaseInfoBean base_info;
             private String deal_detail;
+            private String default_detail;
+            private String gift;
+            private long least_cost;
+            private long reduce_cost;
+            private int discount;
+            private String supply_bonus;
+            private String supply_balance;
+            private String bonus_cleared;
+            private String bonus_rules;
+            private String balance_rules;
+            private String prerogative;
+            private String bind_old_card_url;
+            private String activate_url;
+            private String ticket_class;
+            private String guide_url;
+            private String detail;
+            private String from;
+            private String to;
+            private String flight;
+            private String departure_time;
+            private String landing_time;
+            private String check_in_url;
+            private String air_model;
+
+            @Override
+            public String toString() {
+                final StringBuilder sb = new StringBuilder("{");
+                sb.append("\"to\":\"")
+                        .append(to).append('\"');
+                sb.append(",\"ticket_class\":\"")
+                        .append(ticket_class).append('\"');
+                sb.append(",\"supply_bonus\":\"")
+                        .append(supply_bonus).append('\"');
+                sb.append(",\"supply_balance\":\"")
+                        .append(supply_balance).append('\"');
+                sb.append(",\"reduce_cost\":")
+                        .append(reduce_cost);
+                sb.append(",\"prerogative\":\"")
+                        .append(prerogative).append('\"');
+                sb.append(",\"least_cost\":")
+                        .append(least_cost);
+                sb.append(",\"landing_time\":\"")
+                        .append(landing_time).append('\"');
+                sb.append(",\"guide_url\":\"")
+                        .append(guide_url).append('\"');
+                sb.append(",\"gift\":\"")
+                        .append(gift).append('\"');
+                sb.append(",\"from\":\"")
+                        .append(from).append('\"');
+                sb.append(",\"flight\":\"")
+                        .append(flight).append('\"');
+                sb.append(",\"discount\":")
+                        .append(discount);
+                sb.append(",\"detail\":\"")
+                        .append(detail).append('\"');
+                sb.append(",\"departure_time\":\"")
+                        .append(departure_time).append('\"');
+                sb.append(",\"default_detail\":\"")
+                        .append(default_detail).append('\"');
+                sb.append(",\"deal_detail\":\"")
+                        .append(deal_detail).append('\"');
+                sb.append(",\"check_in_url\":\"")
+                        .append(check_in_url).append('\"');
+                sb.append(",\"bonus_rules\":\"")
+                        .append(bonus_rules).append('\"');
+                sb.append(",\"bonus_cleared\":\"")
+                        .append(bonus_cleared).append('\"');
+                sb.append(",\"bind_old_card_url\":\"")
+                        .append(bind_old_card_url).append('\"');
+                sb.append(",\"base_info\":")
+                        .append(base_info);
+                sb.append(",\"balance_rules\":\"")
+                        .append(balance_rules).append('\"');
+                sb.append(",\"air_model\":\"")
+                        .append(air_model).append('\"');
+                sb.append(",\"activate_url\":\"")
+                        .append(activate_url).append('\"');
+                sb.append('}');
+                return sb.toString();
+            }
 
             public BaseInfoBean getBase_info() {
                 return base_info;
+            }
+
+            public String getDefault_detail() {
+                return default_detail;
+            }
+
+            public void setDefault_detail(String default_detail) {
+                this.default_detail = default_detail;
+            }
+
+            public String getGift() {
+                return gift;
+            }
+
+            public void setGift(String gift) {
+                this.gift = gift;
+            }
+
+            public long getLeast_cost() {
+                return least_cost;
+            }
+
+            public void setLeast_cost(int least_cost) {
+                this.least_cost = least_cost;
+            }
+
+            public long getReduce_cost() {
+
+                return reduce_cost;
+            }
+
+            public void setReduce_cost(int reduce_cost) {
+                this.reduce_cost = reduce_cost;
+            }
+
+            public int getDiscount() {
+                return discount;
+            }
+
+            public void setDiscount(int discount) {
+                this.discount = discount;
+            }
+
+            public String getSupply_bonus() {
+                return supply_bonus;
+            }
+
+            public void setSupply_bonus(String supply_bonus) {
+                this.supply_bonus = supply_bonus;
+            }
+
+            public String getSupply_balance() {
+                return supply_balance;
+            }
+
+            public void setSupply_balance(String supply_balance) {
+                this.supply_balance = supply_balance;
+            }
+
+            public String getBonus_cleared() {
+                return bonus_cleared;
+            }
+
+            public void setBonus_cleared(String bonus_cleared) {
+                this.bonus_cleared = bonus_cleared;
+            }
+
+            public String getBonus_rules() {
+                return bonus_rules;
+            }
+
+            public void setBonus_rules(String bonus_rules) {
+                this.bonus_rules = bonus_rules;
+            }
+
+            public String getBalance_rules() {
+                return balance_rules;
+            }
+
+            public void setBalance_rules(String balance_rules) {
+                this.balance_rules = balance_rules;
+            }
+
+            public String getPrerogative() {
+                return prerogative;
+            }
+
+            public void setPrerogative(String prerogative) {
+                this.prerogative = prerogative;
+            }
+
+            public String getBind_old_card_url() {
+                return bind_old_card_url;
+            }
+
+            public void setBind_old_card_url(String bind_old_card_url) {
+                this.bind_old_card_url = bind_old_card_url;
+            }
+
+            public String getActivate_url() {
+                return activate_url;
+            }
+
+            public void setActivate_url(String activate_url) {
+                this.activate_url = activate_url;
+            }
+
+            public String getTicket_class() {
+                return ticket_class;
+            }
+
+            public void setTicket_class(String ticket_class) {
+                this.ticket_class = ticket_class;
+            }
+
+            public String getGuide_url() {
+                return guide_url;
+            }
+
+            public void setGuide_url(String guide_url) {
+                this.guide_url = guide_url;
+            }
+
+            public String getDetail() {
+                return detail;
+            }
+
+            public void setDetail(String detail) {
+                this.detail = detail;
+            }
+
+            public String getFrom() {
+                return from;
+            }
+
+            public void setFrom(String from) {
+                this.from = from;
+            }
+
+            public String getTo() {
+                return to;
+            }
+
+            public void setTo(String to) {
+                this.to = to;
+            }
+
+            public String getFlight() {
+                return flight;
+            }
+
+            public void setFlight(String flight) {
+                this.flight = flight;
+            }
+
+            public String getDeparture_time() {
+                return departure_time;
+            }
+
+            public void setDeparture_time(String departure_time) {
+                this.departure_time = departure_time;
+            }
+
+            public String getLanding_time() {
+                return landing_time;
+            }
+
+            public void setLanding_time(String landing_time) {
+                this.landing_time = landing_time;
+            }
+
+            public String getCheck_in_url() {
+                return check_in_url;
+            }
+
+            public void setCheck_in_url(String check_in_url) {
+                this.check_in_url = check_in_url;
+            }
+
+            public String getAir_model() {
+                return air_model;
+            }
+
+            public void setAir_model(String air_model) {
+                this.air_model = air_model;
             }
 
             public void setBase_info(BaseInfoBean base_info) {
@@ -150,12 +439,118 @@ public class GetCardBackBean {
                 private String description;
                 private int use_limit;
                 private int get_limit;
+                private boolean use_custom_code;
+                private boolean bind_openid;
                 private boolean can_share;
+                private boolean can_give_friend;
+                private String fixed_term;
+                private String fixed_begin_term;
+
                 private String url_name_type;
                 private String custom_url;
                 private String source;
                 private SkuBean sku;
                 private List<Integer> location_id_list;
+
+                @Override
+                public String toString() {
+                    final StringBuilder sb = new StringBuilder("{");
+                    sb.append("\"use_limit\":")
+                            .append(use_limit);
+                    sb.append(",\"use_custom_code\":")
+                            .append(use_custom_code);
+                    sb.append(",\"url_name_type\":\"")
+                            .append(url_name_type).append('\"');
+                    sb.append(",\"title\":\"")
+                            .append(title).append('\"');
+                    sb.append(",\"sub_title\":\"")
+                            .append(sub_title).append('\"');
+                    sb.append(",\"status\":")
+                            .append(status);
+                    sb.append(",\"source\":\"")
+                            .append(source).append('\"');
+                    sb.append(",\"sku\":")
+                            .append(sku);
+                    sb.append(",\"service_phone\":\"")
+                            .append(service_phone).append('\"');
+                    sb.append(",\"notice\":\"")
+                            .append(notice).append('\"');
+                    sb.append(",\"logo_url\":\"")
+                            .append(logo_url).append('\"');
+                    sb.append(",\"location_id_list\":")
+                            .append(location_id_list);
+                    sb.append(",\"id\":\"")
+                            .append(id).append('\"');
+                    sb.append(",\"get_limit\":")
+                            .append(get_limit);
+                    sb.append(",\"fixed_term\":\"")
+                            .append(fixed_term).append('\"');
+                    sb.append(",\"fixed_begin_term\":\"")
+                            .append(fixed_begin_term).append('\"');
+                    sb.append(",\"description\":\"")
+                            .append(description).append('\"');
+                    sb.append(",\"date_info\":")
+                            .append(date_info);
+                    sb.append(",\"custom_url\":\"")
+                            .append(custom_url).append('\"');
+                    sb.append(",\"color\":\"")
+                            .append(color).append('\"');
+                    sb.append(",\"code_type\":\"")
+                            .append(code_type).append('\"');
+                    sb.append(",\"can_share\":")
+                            .append(can_share);
+                    sb.append(",\"can_give_friend\":")
+                            .append(can_give_friend);
+                    sb.append(",\"brand_name\":\"")
+                            .append(brand_name).append('\"');
+                    sb.append(",\"bind_openid\":")
+                            .append(bind_openid);
+                    sb.append(",\"appid\":\"")
+                            .append(appid).append('\"');
+                    sb.append('}');
+                    return sb.toString();
+                }
+
+                public boolean isCan_give_friend() {
+                    return can_give_friend;
+                }
+
+                public void setCan_give_friend(boolean can_give_friend) {
+                    this.can_give_friend = can_give_friend;
+                }
+
+
+                public String getFixed_term() {
+                    return fixed_term;
+                }
+
+                public void setFixed_term(String fixed_term) {
+                    this.fixed_term = fixed_term;
+                }
+
+                public String getFixed_begin_term() {
+                    return fixed_begin_term;
+                }
+
+                public void setFixed_begin_term(String fixed_begin_term) {
+                    this.fixed_begin_term = fixed_begin_term;
+                }
+
+                public boolean isUse_custom_code() {
+                    return use_custom_code;
+                }
+
+                public void setUse_custom_code(boolean use_custom_code) {
+                    this.use_custom_code = use_custom_code;
+                }
+
+                public boolean isBind_openid() {
+                    return bind_openid;
+                }
+
+                public void setBind_openid(boolean bind_openid) {
+                    this.bind_openid = bind_openid;
+                }
 
                 public int getStatus() {
                     return status;
@@ -333,8 +728,21 @@ public class GetCardBackBean {
                      */
 
                     private int type;
-                    private int begin_timestamp;
-                    private int end_timestamp;
+                    private long begin_timestamp;
+                    private long end_timestamp;
+
+                    @Override
+                    public String toString() {
+                        final StringBuilder sb = new StringBuilder("{");
+                        sb.append("\"type\":")
+                                .append(type);
+                        sb.append(",\"end_timestamp\":")
+                                .append(end_timestamp);
+                        sb.append(",\"begin_timestamp\":")
+                                .append(begin_timestamp);
+                        sb.append('}');
+                        return sb.toString();
+                    }
 
                     public int getType() {
                         return type;
@@ -344,7 +752,7 @@ public class GetCardBackBean {
                         this.type = type;
                     }
 
-                    public int getBegin_timestamp() {
+                    public long getBegin_timestamp() {
                         return begin_timestamp;
                     }
 
@@ -352,7 +760,7 @@ public class GetCardBackBean {
                         this.begin_timestamp = begin_timestamp;
                     }
 
-                    public int getEnd_timestamp() {
+                    public long getEnd_timestamp() {
                         return end_timestamp;
                     }
 
@@ -367,6 +775,15 @@ public class GetCardBackBean {
                      */
 
                     private int quantity;
+
+                    @Override
+                    public String toString() {
+                        final StringBuilder sb = new StringBuilder("{");
+                        sb.append("\"quantity\":")
+                                .append(quantity);
+                        sb.append('}');
+                        return sb.toString();
+                    }
 
                     public int getQuantity() {
                         return quantity;

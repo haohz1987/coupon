@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:background="@drawable/notice_item_bg_selector">
+
+        <TextView
+            android:id="@+id/cell00"
+            style="@style/trade_recode_info_font_style"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:lines="1"
+            android:text=""
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/cell01"
+            style="@style/trade_recode_info_font_style"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:visibility="invisible"
+            android:textSize="16sp"
+            android:lines="1"
+            android:text=""
+            />
+        <TextView
+            android:id="@+id/cell02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_below="@+id/cell00"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="@color/text_gray"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/cell03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/cell00"
+            android:layout_marginTop="2dp"
+            android:text=""
+            android:textColor="@color/text_gray"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/cell10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/cell02"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/right_icon"
+            android:ellipsize="end"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="5"
+            android:text=""
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/cell11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/cell02"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@+id/right_icon"
+            android:ellipsize="end"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="5"
+            android:text=""
+            android:textColor="@color/text_color"
+            android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/go"
+            android:visibility="gone" />
+    </RelativeLayout>
+

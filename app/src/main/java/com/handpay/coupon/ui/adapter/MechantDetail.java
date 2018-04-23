@@ -1,5 +1,6 @@
 package com.handpay.coupon.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
     private StoreDataHelper storeDataHelper;
     private List<StoreData> storeDataList = new ArrayList<>();//操作的数据
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +49,7 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
         GetPoiBackBean getPoiBackBean = (GetPoiBackBean) getIntent().getSerializableExtra("getPoiBack");
         baseInfoBean = getPoiBackBean.getBusiness().getBase_info();
         saveDb();
-        LogT.w("getPoiBack:" + getPoiBackBean.toString());
+//        LogT.w("getPoiBack:" + getPoiBackBean.toString());
         setTitle("我的门店");
         GlideUtils.readCache(this, bindingHeaderView.ivStoreLogo,            //图片容器
                 getPoiBackBean.getBusiness().getBase_info().getPhoto_list().get(0).getPhoto_url(),      //网址
@@ -61,33 +63,14 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
         bindingHeaderView.executePendingBindings();
         initAdapter(baseInfoBean.getPhoto_list());
     }
-/*  if (addDataList.size() > 0) {
-                    List<AppData> queryList= new ArrayList<>();
-                    //获取BgIndex=3的数据
-                    Query<AppData> query = storeDataHelper.queryBuilder()
-                            .where(AppDataDao.Properties.BgIndex.eq("3"))
-                            .build();
-                    queryList = query.list();
-                    LogT.w("查询bgIndex=3："+queryList.toString());
-                    tv_db.setText("查询bgIndex=3："+queryList.toString());
-                }*/
+
+    /**
+     * 保存数据库
+     */
     private void saveDb() {
         //获取操作类
         storeDataHelper = DbUtil.getStoreDataHelper();
         storeDataList = storeDataHelper.queryAll();
-        LogT.w("db取_查询数据库列表："+storeDataList.toString());
-        if(storeDataList.size()>0){
-            List<StoreData> queryList= new ArrayList<>();
-            Query<StoreData> query = storeDataHelper.queryBuilder()
-                    .where(StoreDataDao.Properties.Sid.eq(baseInfoBean.getSid())).build();
-            queryList = query.list();
-            LogT.w("查询sid:"+query.list().toString());
-            if(queryList.size()>0){
-                queryList.clear();
-                return;
-            }
-
-        }
         StoreData storeData = new StoreData();
         storeData.setSid(baseInfoBean.getSid());
         storeData.setBusinessName(baseInfoBean.getBusiness_name());
@@ -115,7 +98,25 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
         storeData.setIntroduction(baseInfoBean.getIntroduction());
         storeData.setOpenTime(baseInfoBean.getOpen_time());
         storeData.setAvgPrice(baseInfoBean.getAvg_price());
-        storeDataHelper.save(storeData);
+        if(storeDataList.size()>0){
+            List<StoreData> queryList= new ArrayList<>();
+            Query<StoreData> query = storeDataHelper.queryBuilder()
+                    .where(StoreDataDao.Properties.Sid.eq(baseInfoBean.getSid())).build();
+            queryList = query.list();
+            if(queryList.size()>0){
+                LogT.w("数据库_storeData_更新");
+                storeDataHelper.update(storeData);
+                queryList.clear();
+            }else{
+                LogT.w("数据库_storeData_新增");
+                storeDataHelper.save(storeData);
+            }
+        }else{
+            LogT.w("数据库_storeData_新增");
+            storeDataHelper.save(storeData);
+        }
+        storeDataList = storeDataHelper.queryAll();
+        LogT.w("db取_查询数据库_storeData_列表："+storeDataList.toString());
     }
 
     private void initAdapter(List<GetPoiBackBean.BusinessBean.BaseInfoBean.PhotoListBean> list) {
@@ -173,11 +174,11 @@ public class MechantDetail extends BaseHeaderActivity<HeaderSlideBinding, Activi
         switch (item.getItemId()) {
             case R.id.action_delete:
                 this.showAlertDialog(this, "提示", getString(R.string.delete_branch), true, new DialogInterface.OnClickListener() {
-
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         RxToast.info("调用删除门店接口");
                         dialog.dismiss();
+                        MechantDetail.this.finish();
                     }
                 }, new DialogInterface.OnClickListener() {
                     @Override

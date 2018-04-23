@@ -211,7 +211,7 @@ public class GetPoiBackBean implements Serializable{
             }
 
             public String getAddress() {
-                return "位  置:"+address;
+                return address;
             }
 
             public void setAddress(String address) {
