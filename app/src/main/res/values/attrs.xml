@@ -2,8 +2,15 @@
 <resources>
 
     <declare-styleable name="RoundBGLayout">
-        <attr name="custom_background" format="reference"></attr>
-        <attr name="corner_radius" format="dimension"></attr>
+        <attr name="custom_background" format="reference"/>
+        <attr name="corner_radius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SwitchView">
+        <attr name="hasShadow" format="boolean"/>
+        <attr name="primaryColor" format="color"/>
+        <attr name="primaryColorDark" format="color"/>
+        <attr name="isOpened" format="boolean"/>
     </declare-styleable>
 
 </resources>

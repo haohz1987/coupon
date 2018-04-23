@@ -2,7 +2,6 @@ package com.handpay.coupon.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,7 +17,6 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -47,7 +45,6 @@ import com.handpay.coupon.takephoto.permission.InvokeListener;
 import com.handpay.coupon.takephoto.permission.PermissionManager;
 import com.handpay.coupon.takephoto.permission.TakePhotoInvocationHandler;
 import com.handpay.coupon.utils.ACache;
-import com.handpay.coupon.utils.AndroidBug5497Workaround;
 import com.handpay.coupon.utils.AssetsUtil;
 import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.LogT;
@@ -119,9 +116,6 @@ public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch_info);
 
-        if (isFullScreen(this)) {
-            AndroidBug5497Workaround.assistActivity(this);
-        }
         isCropable = Build.MODEL.equals("Nexus 5") || Build.MODEL.equals("Lenovo Z2");
         showContentView();
 
@@ -290,11 +284,6 @@ public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implemen
 //                    finish();
             }
         });
-    }
-
-    public boolean isFullScreen(Activity activity) {
-        return (activity.getWindow().getAttributes().flags
-                &WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
     }
 
     @SuppressLint("SetTextI18n")

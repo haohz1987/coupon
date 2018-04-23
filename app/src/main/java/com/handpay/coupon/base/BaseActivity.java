@@ -1,5 +1,6 @@
 package com.handpay.coupon.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
@@ -13,12 +14,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.handpay.coupon.R;
 import com.handpay.coupon.databinding.ActivityBaseBinding;
+import com.handpay.coupon.utils.AndroidBug5497Workaround;
 import com.handpay.coupon.utils.CommonUtils;
 import com.handpay.coupon.utils.PerfectClickListener;
 import com.handpay.coupon.view.CustomDialog;
@@ -61,7 +64,9 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
 
         mBaseBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.activity_base, null, false);
         bindingView = DataBindingUtil.inflate(getLayoutInflater(), layoutResID, null, false);
-
+        if (isFullScreen(this)) {
+            AndroidBug5497Workaround.assistActivity(this);
+        }
         // content
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         bindingView.getRoot().setLayoutParams(params);
@@ -287,6 +292,10 @@ public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity 
             }
         }
         this.runOnUiThread(new RunnableShowAlertDialog(context, title, message, cancelable, okString, oclOK, cancelString, oclCancel, middleButton, oclMiddle));
+    }
+    public boolean isFullScreen(Activity activity) {
+        return (activity.getWindow().getAttributes().flags
+                & WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
     }
     /**
      * 替换、过滤特殊字符

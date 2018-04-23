@@ -15,6 +15,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private List<?> mFragment;
     private List<String> mTitleList;
+//    private List<GetCardData>  mGetCardDataList;
 
     /**
      * 普通，主页使用
@@ -31,6 +32,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         this.mFragment = mFragment;
         this.mTitleList = mTitleList;
+//        this.mGetCardDataList = mGetCardDataList;
     }
 
     @Override
@@ -67,5 +69,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         this.mFragment = fragment;
         notifyDataSetChanged();
     }
+
 
 }

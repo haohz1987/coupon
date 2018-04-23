@@ -16,4 +16,5 @@ public class BaseKey {
     public static final String KEY_LONGTITUDE = "longtitude";
     public static final String CATEGORIES = "categories";
 
+
 }

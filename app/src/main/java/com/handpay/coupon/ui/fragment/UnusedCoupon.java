@@ -4,19 +4,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.handpay.coupon.R;
 import com.handpay.coupon.base.BaseFragment;
-import com.handpay.coupon.bean.CouponBean;
 import com.handpay.coupon.databinding.FragmentRecycleBinding;
+import com.handpay.coupon.db.DbUtil;
+import com.handpay.coupon.db.GetCardDataHelper;
+import com.handpay.coupon.entity.GetCardData;
 import com.handpay.coupon.ui.activity.MainActivity;
 import com.handpay.coupon.ui.adapter.CouponAdapter;
 import com.handpay.coupon.utils.ACache;
-import com.handpay.coupon.utils.AssetsUtil;
-import com.handpay.coupon.utils.RxToast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by haohz on 2018/2/2.
@@ -33,18 +34,28 @@ public class UnusedCoupon extends BaseFragment<FragmentRecycleBinding> {
     private ACache aCache;
     private MainActivity activity;
     private CouponAdapter couponAdapter;
-    //    private HotMovieBean mHotMovieBean;
+    private List<GetCardData> cardDataList = new ArrayList<>();//操作的数据
     private View mHeaderView = null;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         showContentView();
+
         aCache = ACache.get(getActivity());
         couponAdapter = new CouponAdapter(activity);
+
         setAdapter();
 //        mHotMovieBean = (HotMovieBean) aCache.getAsObject(Constants.ONE_HOT_MOVIE); 有网络后将数据缓存到acache
 //        isPrepared = true;
+    }
+
+    private void searchData() {
+        GetCardDataHelper getCardDataHelper = DbUtil.getGetCardDataHelper();
+        cardDataList.clear();
+        cardDataList = getCardDataHelper.queryAll();
+        couponAdapter.clear();
+        couponAdapter.addAll(cardDataList);
     }
 
     //懒加载
@@ -84,7 +95,8 @@ public class UnusedCoupon extends BaseFragment<FragmentRecycleBinding> {
         // 不加滑动不流畅
         bindingView.listOne.setNestedScrollingEnabled(false);
         bindingView.listOne.setHasFixedSize(false);
-        getMechantList();
+//        getMechantList();
+        searchData();
         bindingView.listOne.setAdapter(couponAdapter);
         couponAdapter.notifyDataSetChanged();
         isFirst = false;
@@ -108,17 +120,18 @@ public class UnusedCoupon extends BaseFragment<FragmentRecycleBinding> {
         }
     }
 
-    private void getMechantList() {
-        String temp = AssetsUtil.loadlocalData(activity, "getCoupList.json");
-        if (TextUtils.isEmpty(temp)) {
-            RxToast.info("获取temp失败："+temp);
-            return;
-        }
-//        LogT.w(temp);
-        CouponBean couponBean = new Gson().fromJson(temp, CouponBean.class);
-        couponAdapter.clear();
-        couponAdapter.addAll(couponBean.getResult());
-    }
+//    private void getMechantList() {
+//
+//        String temp = AssetsUtil.loadlocalData(activity, "getCoupList.json");
+//        if (TextUtils.isEmpty(temp)) {
+//            RxToast.info("获取temp失败："+temp);
+//            return;
+//        }
+//        CouponBean couponBean = new Gson().fromJson(temp, CouponBean.class);
+//        couponAdapter.clear();
+////        LogT.w("couponBean.getResult()::"+couponBean.getResult());
+//        couponAdapter.addAll(couponBean.getResult());
+//    }
 
     @Override
     public void onAttach(Context context) {

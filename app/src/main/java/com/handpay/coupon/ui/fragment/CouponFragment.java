@@ -36,26 +36,43 @@ import java.util.List;
 
 public class CouponFragment extends BaseFragment<FragmentCouponBinding> implements SelectCouponsSheet.OnSheetSelected {
 
-    private ArrayList<String> mTitleList = new ArrayList<>(3);
-    private ArrayList<Fragment> mFragments = new ArrayList<>(3);
-    private Activity activity;
+    private ArrayList<String> mTitleList = new ArrayList<>(4);
+    private ArrayList<Fragment> mFragments = new ArrayList<>(4);
     private ArrayList<String> cardList;
     private List<GetCardData> cardDataList = new ArrayList<>();//操作的数据
     private GetCardBackBean.CardBean.GrouponBean.BaseInfoBean baseInfoBean;
     private GetCardBackBean getCardBackBean;
     private GetCardBackBean.CardBean.GrouponBean grouponBean;
     private Query<GetCardData> query;
+    private Activity mActivity;
 
     @Override
     public int setContent() {
         return R.layout.fragment_coupon;
     }
+//    setUserVisibleHint
+
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser){//onresume
+//            batchGetCardBack();
+//            getCardBack();
+//        }else{//onpause
+//
+//        }
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        activity = getActivity();
+        mActivity = getActivity();
         showLoading();
+        //获取数据
+        batchGetCardBack();
+        getCardBack();
+
         initFragmentList();
         MyFragmentPagerAdapter myAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitleList);
         bindingView.vpCoupon.setAdapter(myAdapter);
@@ -77,13 +94,12 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
                 });
             }
         });
-        batchGetCardBack();
-        getCardBack();
+
     }
 
     /* 获取卡列表 */
     private void batchGetCardBack() {
-        String temp = AssetsUtil.loadlocalData(activity, "batchGetCardBack.json");
+        String temp = AssetsUtil.loadlocalData(mActivity, "batchGetCardBack.json");
         if (TextUtils.isEmpty(temp)) return;
         BatchGetCardBackBean batchGetCardBackBean = new Gson().fromJson(temp, BatchGetCardBackBean.class);
         cardList = new ArrayList<>(batchGetCardBackBean.getCard_id_list());
@@ -93,7 +109,7 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
 
     /* 获取卡列表 */
     private void getCardBack() {
-        String temp = AssetsUtil.loadlocalData(activity, "getCardBack.json");
+        String temp = AssetsUtil.loadlocalData(mActivity, "getCardBack.json");
         if (TextUtils.isEmpty(temp)) return;
         getCardBackBean = new Gson().fromJson(temp, GetCardBackBean.class);
         baseInfoBean = getCardBackBean.getCard().getGroupon().getBase_info();
@@ -176,11 +192,11 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
             if (queryList.size() > 0) {
                 LogT.w("数据库_getCardData_更新");
                 getCardDataHelper.update(getCardData);
-                queryList.clear();
             } else {
                 LogT.w("数据库_getCardData_新增");
                 getCardDataHelper.save(getCardData);
             }
+            queryList.clear();
         } else {
             LogT.w("数据库_getCardData_新增");
             getCardDataHelper.save(getCardData);
@@ -194,6 +210,9 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
         mTitleList.add("未使用");
         mTitleList.add("已使用");
         mTitleList.add("已核销");
+        mTitleList.add("审核中");
+
+        mFragments.add(new UnusedCoupon());
         mFragments.add(new UnusedCoupon());
         mFragments.add(new UsedCoupon());
         mFragments.add(new VerifiedCoupon());
@@ -223,4 +242,5 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
 
         }
     }
+
 }

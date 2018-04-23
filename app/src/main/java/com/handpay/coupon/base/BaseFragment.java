@@ -1,6 +1,7 @@
 package com.handpay.coupon.base;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -32,6 +33,7 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment{
     protected SV bindingView;
     // fragment是否显示了
     protected boolean mIsVisible = false;
+    protected Activity mActivity;
     // 加载中
     public LinearLayout mLlProgressBar;
     // 加载失败
@@ -41,6 +43,14 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment{
     // 动画
     public AnimationDrawable mAnimationDrawable;
     private CompositeSubscription mCompositeSubscription;
+
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        this.mActivity = (Activity)context;
+//        if(this.mActivity==null)
+//            this.mActivity= getActivity();
+//    }
 
     @Nullable
     @Override

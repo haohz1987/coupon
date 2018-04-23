@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        if (savedInstanceState != null) {
+//            savedInstanceState.putParcelable("android:support:fragments", null);
+//        }
         super.onCreate(savedInstanceState);
         mContext = this;
         mACache = ACache.get(this);

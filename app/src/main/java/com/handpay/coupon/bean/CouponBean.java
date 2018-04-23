@@ -143,6 +143,49 @@ public class CouponBean extends BaseObservable implements Serializable{
         private int cancelCount;
         private String qrCode;
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("{");
+            sb.append("\"validPeriod\":\"")
+                    .append(validPeriod).append('\"');
+            sb.append(",\"usedPerson\":")
+                    .append(usedPerson);
+            sb.append(",\"usedLimit\":")
+                    .append(usedLimit);
+            sb.append(",\"usedCount\":")
+                    .append(usedCount);
+            sb.append(",\"startDay\":\"")
+                    .append(startDay).append('\"');
+            sb.append(",\"repertoryAmount\":")
+                    .append(repertoryAmount);
+            sb.append(",\"receiveTime\":\"")
+                    .append(receiveTime).append('\"');
+            sb.append(",\"qrCode\":\"")
+                    .append(qrCode).append('\"');
+            sb.append(",\"logo\":\"")
+                    .append(logo).append('\"');
+            sb.append(",\"explain\":\"")
+                    .append(explain).append('\"');
+            sb.append(",\"endDay\":\"")
+                    .append(endDay).append('\"');
+            sb.append(",\"discount\":\"")
+                    .append(discount).append('\"');
+            sb.append(",\"coupTitle\":\"")
+                    .append(coupTitle).append('\"');
+            sb.append(",\"coupNo\":\"")
+                    .append(coupNo).append('\"');
+            sb.append(",\"coupColor\":")
+                    .append(coupColor);
+            sb.append(",\"coupAmount\":")
+                    .append(coupAmount);
+            sb.append(",\"consumeLite\":")
+                    .append(consumeLite);
+            sb.append(",\"cancelCount\":")
+                    .append(cancelCount);
+            sb.append('}');
+            return sb.toString();
+        }
+
         public String getCoupNo() {
             return coupNo;
         }

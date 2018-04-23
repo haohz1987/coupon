@@ -1,6 +1,6 @@
 package com.handpay.coupon.ui.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,6 @@ import com.handpay.coupon.base.BaseFragment;
 import com.handpay.coupon.bean.GetPoiBackBean;
 import com.handpay.coupon.bean.PoiListBean;
 import com.handpay.coupon.databinding.FragmentMechantBinding;
-import com.handpay.coupon.ui.activity.MainActivity;
 import com.handpay.coupon.ui.activity.BranchInfo;
 import com.handpay.coupon.ui.adapter.MechantDetail;
 import com.handpay.coupon.ui.adapter.PoiListAdapter;
@@ -38,8 +37,8 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
     // 是否正在刷新（用于刷新数据时返回页面不再刷新）
     private boolean mIsLoading = false;
     private ACache aCache;
-    private MainActivity activity;
     private PoiListAdapter poiListAdapter;
+    private Activity mActivity;
     //    private HotMovieBean mHotMovieBean;
     private View mHeaderView = null;
 
@@ -52,8 +51,9 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         showContentView();
-        aCache = ACache.get(getActivity());
-        poiListAdapter = new PoiListAdapter(activity) {
+        mActivity=getActivity();
+        aCache = ACache.get(mActivity);
+        poiListAdapter = new PoiListAdapter(mActivity) {
             @Override
             public void doStoreClick(int available_state,String poi_id) {
                 if (available_state == 3){
@@ -68,7 +68,7 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
         bindingView.btnCreate.setOnClickListener(new DebouncingOnClickListener() {
             @Override
             public void doClick(View v) {
-                activity.startActivity(new Intent(activity, BranchInfo.class));
+                mActivity.startActivity(new Intent(mActivity, BranchInfo.class));
             }
         });
     }
@@ -97,7 +97,7 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
 
     private void setAdapter() {
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(mActivity);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         bindingView.listOne.setLayoutManager(mLayoutManager);
 
@@ -149,19 +149,30 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
     }
 
     private void getMechantList() {
-        String temp = AssetsUtil.loadlocalData(activity, "getPoiList.json");
+        String temp = AssetsUtil.loadlocalData(mActivity, "getPoiList.json");
         if (TextUtils.isEmpty(temp)) {
             RxToast.info("获取temp失败："+temp);
             return;
         }
         PoiListBean poiListBean = new Gson().fromJson(temp,PoiListBean.class);
+        if(poiListAdapter==null){
+            poiListAdapter = new PoiListAdapter(mActivity) {
+                @Override
+                public void doStoreClick(int available_state,String poi_id) {
+                    if (available_state == 3){
+                        getPoiBack();
+                    }else
+                        RxToast.info("修改或查看门店信息");
+                }
+            };
+        }
         poiListAdapter.clear();
         poiListAdapter.addAll(poiListBean.getBusiness_list());
 
     }
 
     private void getPoiBack() {
-        String temp = AssetsUtil.loadlocalData(activity, "getPoiBack.json");
+        String temp = AssetsUtil.loadlocalData(mActivity, "getPoiBack.json");
         if (TextUtils.isEmpty(temp)) {
             RxToast.info("获取temp失败："+temp);
             return ;
@@ -170,15 +181,9 @@ public class MechantFragment extends BaseFragment<FragmentMechantBinding> {
         GetPoiBackBean getPoiBackBean = new Gson().fromJson(temp,GetPoiBackBean.class);
         arrayList.add(getPoiBackBean);
 //        LogT.w("arrayList="+arrayList.toString());
-        Intent intent = new Intent(activity, MechantDetail.class);
+        Intent intent = new Intent(mActivity, MechantDetail.class);
         intent.putExtra("getPoiBack",getPoiBackBean);
 //        intent.putParcelableArrayListExtra("getPoiBack",arrayList);
-        activity.startActivity(intent);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        activity = (MainActivity) context;
+        mActivity.startActivity(intent);
     }
 }
