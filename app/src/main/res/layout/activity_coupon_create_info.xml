@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.handpay.coupon.view.MyNestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <LinearLayout
+                android:id="@+id/ll_code"
+                style="@style/LinearLayoutStyle"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_code"
+                    style="@style/text_style"
+                    android:layout_width="110dp"
+                    android:text="卡券code" />
+
+                <EditText
+                    android:id="@+id/et_code"
+                    style="@style/edit_text_style"
+                    android:hint="选填，自定义code时必填" />
+
+                <ImageView
+                    android:id="@+id/iv_code"
+                    style="@style/image_view_style" />
+
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+            <LinearLayout
+                android:id="@+id/ll_openid"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_openid"
+                    style="@style/text_style"
+                    android:layout_width="110dp"
+                    android:text="领取者openId" />
+
+                <EditText
+                    android:id="@+id/et_openid"
+                    style="@style/edit_text_style"
+                    android:hint="选填，指定领取者的openid，只有该用户能领取，自定义openid时必填" />
+
+                <ImageView
+                    android:id="@+id/iv_openid"
+                    style="@style/image_view_style" />
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+            <LinearLayout
+                android:id="@+id/ll_expire_seconds"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_expire_seconds"
+                    style="@style/text_style"
+                    android:layout_width="120dp"
+
+                    android:text="二维码有效时间" />
+
+                <EditText
+                    android:id="@+id/et_expire_seconds"
+                    style="@style/edit_text_style"
+                    android:hint="选填，默认永久有效，填写范围是60 ~ 1800 秒" />
+
+                <ImageView
+                    android:id="@+id/iv_expire_seconds"
+                    style="@style/image_view_style" />
+
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+            <LinearLayout
+                android:id="@+id/ll_is_unique_code"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_is_unique_code"
+                    style="@style/text_style"
+                    android:text="再次扫描" />
+
+                <EditText
+                    android:id="@+id/et_is_unique_code"
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="默认领取后不可再次扫描" />
+
+                <com.handpay.coupon.view.SwitchView
+                    android:id="@+id/sv_is_unique_code"
+                    style="@style/SwitchViewStyle" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/bg_btn_login_selected"
+                android:text="生成二维码"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible" />
+            <ImageView
+                android:id="@+id/iv_qr"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </com.handpay.coupon.view.MyNestedScrollView>
+
+</layout>

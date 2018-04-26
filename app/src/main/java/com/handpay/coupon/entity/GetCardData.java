@@ -1,14 +1,14 @@
 package com.handpay.coupon.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Created by haohz on 2018/4/18.
  */
 @Entity
-public class GetCardData {
+public class GetCardData{
 
     @Id
     public String card_id; //卡id

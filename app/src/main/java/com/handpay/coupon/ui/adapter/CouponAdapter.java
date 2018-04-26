@@ -2,6 +2,7 @@ package com.handpay.coupon.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,6 +10,7 @@ import com.handpay.coupon.R;
 import com.handpay.coupon.base.CouponType;
 import com.handpay.coupon.databinding.ItemCouponBinding;
 import com.handpay.coupon.entity.GetCardData;
+import com.handpay.coupon.ui.activity.CouponCreateInfo;
 import com.handpay.coupon.utils.ACache;
 import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.LogT;
@@ -70,6 +72,10 @@ public class CouponAdapter extends BaseRecyclerViewAdapter<GetCardData> {
                 public void doClick(View v) {
                     LogT.w("点击llGrant的位置_bean：" + resultBean.toString() + ",点击的位置：" + position);
                     RxToast.info("发券");
+                Intent intent =new Intent(activity,CouponCreateInfo.class);
+                    intent.putExtra("card_id",resultBean.getCard_id());
+                    intent.putExtra("user_custom_code",resultBean.getUse_custom_code());
+                    activity.startActivity(intent);
                 }
             });
 

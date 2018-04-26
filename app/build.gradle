@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -25,7 +24,6 @@ android {
             jni.srcDirs = []//disable automatic ndk-build
         }
     }
-
     dataBinding {
         enabled = true
     }
@@ -45,7 +43,6 @@ android {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/rxjava.properties'
     }
-
     greendao {
         schemaVersion 1                     //版本号，升级数据库版本时配置
         daoPackage 'com.handpay.coupon.dao'     //包名
@@ -72,5 +69,5 @@ android {
         implementation project(':ultra-pull-to-refresh')
         implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     }
-}
 
+}
