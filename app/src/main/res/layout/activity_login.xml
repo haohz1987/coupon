@@ -78,10 +78,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/e" />
+                <View style="@style/ViewLineStyle"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,10 +124,7 @@
                         android:src="@mipmap/pass_gone" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/e" />
+                <View style="@style/ViewLineStyle"/>
 
                 <Button
                     android:id="@+id/btn_login"

@@ -18,6 +18,11 @@
     <string name="tv_title">标题</string>
     <string name="hint_cannot_qrcode_paytype">“收款码”支付方式不可用！</string>
 
+    <string name="tip">提示</string>
+    <string name="select_start_date_tip">请选择起始日期</string>
+    <string name="select_end_date_tip">请选择结束日期</string>
+    <string name="select_date_tip">结束日期不能小于起始日期</string>
+
     <string name="startlocation">开始定位</string>
     <string name="stoplocation">停止定位</string>
     <string name="show_tip">图集</string>

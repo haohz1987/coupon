@@ -1,7 +1,7 @@
 package com.handpay.coupon.ui.fragment;
 
 import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -19,11 +19,11 @@ import com.handpay.coupon.databinding.FragmentCouponBinding;
 import com.handpay.coupon.db.DbUtil;
 import com.handpay.coupon.db.GetCardDataHelper;
 import com.handpay.coupon.entity.GetCardData;
+import com.handpay.coupon.ui.activity.CouponInfo;
 import com.handpay.coupon.ui.adapter.MyFragmentPagerAdapter;
 import com.handpay.coupon.utils.AssetsUtil;
 import com.handpay.coupon.utils.DebouncingOnClickListener;
 import com.handpay.coupon.utils.LogT;
-import com.handpay.coupon.view.SelectCouponsSheet;
 
 import org.greenrobot.greendao.query.Query;
 
@@ -34,7 +34,7 @@ import java.util.List;
  * Created by haohz on 2018/2/2.
  */
 
-public class CouponFragment extends BaseFragment<FragmentCouponBinding> implements SelectCouponsSheet.OnSheetSelected {
+public class CouponFragment extends BaseFragment<FragmentCouponBinding>  {
 
     private ArrayList<String> mTitleList = new ArrayList<>(4);
     private ArrayList<Fragment> mFragments = new ArrayList<>(4);
@@ -50,9 +50,8 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
     public int setContent() {
         return R.layout.fragment_coupon;
     }
-//    setUserVisibleHint
 
-
+//  fragment可见时重新刷新数据
 //    @Override
 //    public void setUserVisibleHint(boolean isVisibleToUser) {
 //        super.setUserVisibleHint(isVisibleToUser);
@@ -87,14 +86,9 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
         bindingView.btnCreate.setOnClickListener(new DebouncingOnClickListener() {
             @Override
             public void doClick(View v) {
-                SelectCouponsSheet.showSheet(getActivity(), CouponFragment.this, new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                    }
-                });
+                getActivity().startActivity(new Intent(getActivity(), CouponInfo.class));
             }
         });
-
     }
 
     /* 获取卡列表 */
@@ -208,9 +202,9 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
 
     private void initFragmentList() {
         mTitleList.add("未使用");
-        mTitleList.add("已使用");
+        mTitleList.add("已过期");
         mTitleList.add("已核销");
-        mTitleList.add("审核中");
+        mTitleList.add("审核");
 
         mFragments.add(new UnusedCoupon());
         mFragments.add(new UnusedCoupon());
@@ -218,29 +212,5 @@ public class CouponFragment extends BaseFragment<FragmentCouponBinding> implemen
         mFragments.add(new VerifiedCoupon());
     }
 
-    @Override
-    public void onSheetClick(int whichBtn) {
-        if (whichBtn == R.id.btn_general) {
-
-        } else if (whichBtn == R.id.btn_groupon) {
-
-        } else if (whichBtn == R.id.btn_discount) {
-
-        } else if (whichBtn == R.id.btn_gift) {
-
-        } else if (whichBtn == R.id.btn_cash) {
-
-        } else if (whichBtn == R.id.btn_member_card) {
-
-        } else if (whichBtn == R.id.btn_scenic_ticket) {
-
-        } else if (whichBtn == R.id.btn_movie_ticket) {
-
-        } else if (whichBtn == R.id.btn_lucky_money) {
-
-        } else if (whichBtn == R.id.cancel) {
-
-        }
-    }
 
 }

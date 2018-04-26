@@ -310,7 +310,7 @@ public class GetPoiBackBean implements Serializable{
                 return categories;
             }
             public String getCategoriesString(){
-                return "门店类型:"+categories.toString();
+                return categories.toString();
             }
 
             public void setCategories(List<String> categories) {

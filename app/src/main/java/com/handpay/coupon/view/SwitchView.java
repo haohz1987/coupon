@@ -22,6 +22,8 @@ import com.handpay.coupon.R;
 
 
 public class SwitchView extends View {
+//        <item name="app:primaryColor">#ed563a</item>
+//        <item name="app:primaryColorDark">#ed563a</item>
     private final int DEFAULT_COLOR_PRIMARY = 0xFFe05a17;
     private final int DEFAULT_COLOR_PRIMARY_DARK = 0xFFD6D6D6;
     private final float RATIO_ASPECT = 0.58f;

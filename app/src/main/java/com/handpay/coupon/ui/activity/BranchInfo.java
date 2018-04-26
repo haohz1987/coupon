@@ -155,7 +155,7 @@ public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implemen
             @Override
             protected void onDisplayImage(Context context, ImageView imageView, TImage path) {
                 RxToast.info("上传服务器成功后调用请求图片列表接口");
-                LogT.w("图片原始地址=" + path.getOriginalPath() + "\n，如果图片超过100KB进行压缩，\n图片压缩地址=" + path.getCompressPath());
+//                LogT.w("图片原始地址=" + path.getOriginalPath() + "\n，如果图片超过100KB进行压缩，\n图片压缩地址=" + path.getCompressPath());
                 GlideUtils.readCache(context, imageView, "file://" + path.getCompressPath(), mACache, "giv");
             }
 
@@ -271,6 +271,8 @@ public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implemen
         bindingView.tvAddressSelect.setTextColor(getResources().getColor(android.R.color.black));
         bindingView.llPcb.setClickable(false);
         bindingView.llCategories.setClickable(false);
+        bindingView.tvCategories.setText(baseInfoBean.getCategoriesString());
+        bindingView.tvCategories.setTextColor(getResources().getColor(android.R.color.black));
         bindingView.etAddress.setEnabled(false);
         bindingView.etAddress.setText(baseInfoBean.getAddress());
         bindingView.llMdAddress.setClickable(false);
@@ -281,7 +283,7 @@ public class BranchInfo extends BaseActivity<ActivityBranchInfoBinding> implemen
             public void doClick(View v) {
                 RxToast.info("调用修改门店接口");
 //                    startActivity(new Intent(BranchInfo.this, BusinessInfo.class));
-//                    finish();
+                BranchInfo.this.finish();
             }
         });
     }

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.handpay.coupon.view.MyNestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <LinearLayout
+                android:id="@+id/ll_use_custom_code"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_use_custom_code"
+                    style="@style/text_style"
+                    android:text="自定义code" />
+
+                <EditText
+                    android:id="@+id/et_use_custom_code"
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="是否自定义 code 码" />
+
+                <com.handpay.coupon.view.SwitchView
+                    android:id="@+id/sv_use_custom_code"
+                    style="@style/SwitchViewStyle" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_bind_openid"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_bind_openid"
+                    style="@style/text_style"
+                    android:text="领取限制" />
+
+                <EditText
+                    android:id="@+id/et_bind_openid"
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="是否指定用户领取" />
+
+                <com.handpay.coupon.view.SwitchView
+                    android:id="@+id/sv_bind_openid"
+                    style="@style/SwitchViewStyle" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_can_share"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_can_share"
+                    style="@style/text_style"
+                    android:text="可分享" />
+
+                <EditText
+                    android:id="@+id/et_can_share"
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="领取卡券是否可分享" />
+
+                <com.handpay.coupon.view.SwitchView
+                    android:id="@+id/sv_can_share"
+                    style="@style/SwitchViewStyle" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_can_give_friend"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_can_give_friend"
+                    style="@style/text_style"
+                    android:text="可转赠" />
+
+                <EditText
+                    android:id="@+id/et_can_give_friend"
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="卡券是否可转赠" />
+
+                <com.handpay.coupon.view.SwitchView
+                    android:id="@+id/sv_can_give_friend"
+                    style="@style/SwitchViewStyle"
+                    app:isOpened="true" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/tr_date_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_45">
+
+                    <TextView
+                        android:id="@+id/tv_date_info"
+                        style="@style/text_style"
+                        android:text="有效期" />
+
+                    <Spinner
+                        android:id="@+id/sp_date_inf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/line" />
+
+                <TableRow
+                    android:id="@+id/tr_begin_timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_45">
+
+                    <TextView
+                        android:id="@+id/tv_begin_timestamp_tip"
+                        style="@style/text_style"
+                        android:text="起始日期" />
+
+                    <TextView
+                        android:id="@+id/tv_begin_timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/sp_16" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:src="@mipmap/arraw" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tr_fixed_term"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_45">
+
+                    <TextView
+                        android:id="@+id/tv_fixed_term"
+                        style="@style/text_style"
+                        android:text="生效天数" />
+
+                    <EditText
+                        android:id="@+id/et_fixed_term"
+                        style="@style/edit_text_style"
+                        android:hint="自领取后多少天内有效" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/line" />
+
+                <TableRow
+                    android:id="@+id/tr_end_timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_45">
+
+                    <TextView
+                        android:id="@+id/tv_end_timestamp_tip"
+                        style="@style/text_style"
+                        android:text="结束日期" />
+
+                    <TextView
+                        android:id="@+id/tv_end_timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/sp_16" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:src="@mipmap/arraw" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tr_fixed_begin_term"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_45">
+
+                    <TextView
+                        android:id="@+id/tv_fixed_begin_term"
+                        style="@style/text_style"
+                        android:text="生效延期" />
+
+                    <EditText
+                        android:id="@+id/et_fixed_begin_term"
+                        style="@style/edit_text_style"
+                        android:hint="自领取后多少天开始生效" />
+                </TableRow>
+
+            </TableLayout>
+            <View style="@style/ViewLineStyle" />
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="自定义cell" />
+
+                <EditText
+                    style="@style/edit_text_style"
+                    android:enabled="false"
+                    android:hint="选填，商户自定义cell 名称,需要申请权限" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <!--<TextView-->
+                    <!--style="@style/text_style"-->
+                    <!--android:text="" />-->
+                <com.handpay.coupon.view.flowtag.FlowTagLayout
+                    android:id="@+id/ftl_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="-5dp" />
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_service_phone"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_service_phone"
+                    style="@style/text_style"
+                    android:text="自定义url" />
+
+                <EditText
+                    android:id="@+id/et_service_phone"
+                    style="@style/edit_text_style"
+                    android:hint="选填，支持卡券页内跳转,跳转页面内容需与自定义cell 名称保持一致" />
+
+                <ImageView
+                    android:id="@+id/iv_service_phone"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_45"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/bg_btn_login_selected"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </com.handpay.coupon.view.MyNestedScrollView>
+
+</layout>

@@ -12,12 +12,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/dp_10">
+
             <LinearLayout
                 android:id="@+id/ll_branch_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_branch_name"
@@ -32,16 +30,16 @@
                 <ImageView
                     android:id="@+id/iv_branch_name"
                     style="@style/image_view_style" />
+
+                <TextView
+                    android:id="@+id/tv_num_branch_name"
+                    style="@style/NumTextStyle"
+                    android:text="0/12" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:orientation="horizontal">
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/text_style"
@@ -49,106 +47,234 @@
 
                 <com.handpay.coupon.view.flowtag.FlowTagLayout
                     android:id="@+id/ftl_1"
-                    android:layout_marginTop="-5dp"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginTop="-5dp" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+
+            <View style="@style/ViewLineStyle" />
+
             <LinearLayout
-                android:id="@+id/ll_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                android:id="@+id/ll_title"
+                style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_address"
+                    android:id="@+id/tv_title"
                     style="@style/text_style"
-                    android:text="展示提示" />
+                    android:text="券名" />
 
                 <EditText
-                    android:id="@+id/et_address"
+                    android:id="@+id/et_title"
                     style="@style/edit_text_style"
                     android:hint="请输入优惠券提示信息" />
 
                 <ImageView
-                    android:id="@+id/iv_address"
+                    android:id="@+id/iv_title"
                     style="@style/image_view_style" />
+
+                <TextView
+                    android:id="@+id/tv_num_title"
+                    style="@style/NumTextStyle"
+                    android:text="0/9" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
+
             <LinearLayout
                 android:id="@+id/ll_sub_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_sub_title"
                     style="@style/text_style"
-                    android:text="子标题" />
+                    android:text="券名副标题" />
 
                 <EditText
                     android:id="@+id/et_sub_title"
                     style="@style/edit_text_style"
-                    android:hint="请输入子标题" />
+                    android:hint="请输入券名的副标题" />
 
                 <ImageView
                     android:id="@+id/iv_sub_title"
                     style="@style/image_view_style" />
+
+                <TextView
+                    android:id="@+id/tv_num_sub_title"
+                    style="@style/NumTextStyle"
+                    android:text="0/18" />
             </LinearLayout>
 
-            <View
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_color"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_color"
+                    style="@style/text_style"
+                    android:text="卡券颜色" />
+
+                <ImageView
+                    android:id="@+id/iv_select"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/shape_corner_bg04" />
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_notice"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_notice"
+                    style="@style/text_style"
+                    android:text="使用提醒" />
+
+                <EditText
+                    android:id="@+id/et_notice"
+                    style="@style/edit_text_style"
+                    android:hint="一句话描述，展示在首页" />
+
+                <ImageView
+                    android:id="@+id/iv_notice"
+                    style="@style/image_view_style" />
+
+                <TextView
+                    android:id="@+id/tv_num_notice"
+                    style="@style/NumTextStyle"
+                    android:text="0/9" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_service_phone"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_service_phone"
+                    style="@style/text_style"
+                    android:text="客服电话" />
+
+                <EditText
+                    android:id="@+id/et_service_phone"
+                    style="@style/edit_text_style"
+                    android:hint="选填"
+                    android:inputType="phone" />
+
+                <ImageView
+                    android:id="@+id/iv_service_phone"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_source"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_source"
+                    style="@style/text_style"
+                    android:text="第三方来源" />
+
+                <EditText
+                    android:id="@+id/et_source"
+                    style="@style/edit_text_style"
+                    android:hint="选填，例如大众点评,美团"
+                    android:inputType="phone" />
+
+                <ImageView
+                    android:id="@+id/iv_source"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_description"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    style="@style/text_style"
+                    android:text="使用说明" />
+
+                <EditText
+                    android:id="@+id/et_description"
+                    style="@style/edit_text_style"
+                    android:hint="使用说明" />
+
+                <ImageView
+                    android:id="@+id/iv_description"
+                    style="@style/image_view_style" />
+
+                <TextView
+                    android:id="@+id/tv_num_description"
+                    style="@style/NumTextStyle"
+                    android:text="0/1000" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_use_limit"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_use_limit"
+                    style="@style/text_style"
+                    android:text="次数限制" />
+
+                <EditText
+                    android:id="@+id/et_use_limit"
+                    style="@style/edit_text_style"
+                    android:hint="每人使用次数限制" />
+
+                <ImageView
+                    android:id="@+id/iv_use_limit"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_get_limit"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_get_limit"
+                    style="@style/text_style"
+                    android:text="领取次数" />
+
+                <EditText
+                    android:id="@+id/et_get_limit"
+                    style="@style/edit_text_style"
+                    android:hint="每人最大领取次数" />
+
+                <ImageView
+                    android:id="@+id/iv_get_limit"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+            <Button
+                android:id="@+id/btn_next"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
-            <RelativeLayout
-                android:id="@+id/rl_image"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:clickable="true"
-                android:focusable="true">
-                <com.handpay.coupon.view.SwitchView
-                    android:id="@+id/tv_log_state"
-                    android:layout_width="58dp"
-                    android:layout_height="29dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:layout_alignParentRight="true"
-                    app:primaryColor="#ed563a"
-                    app:primaryColorDark="#ed563a"
-                    />
-
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1px"-->
-                <!--android:background="@color/grey_color" />-->
-            <!--<Button-->
-                <!--android:id="@+id/btn_upload"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/dp_45"-->
-                <!--android:layout_margin="@dimen/dp_10"-->
-                <!--android:background="@drawable/bg_btn_login_selected"-->
-                <!--android:text="@string/upload"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="18sp"-->
-                <!--android:visibility="visible" />-->
+                android:layout_height="@dimen/dp_45"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/bg_btn_login_selected"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible" />
         </LinearLayout>
     </com.handpay.coupon.view.MyNestedScrollView>
 

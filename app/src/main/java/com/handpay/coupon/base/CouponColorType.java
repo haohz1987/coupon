@@ -1,4 +1,4 @@
-package com.handpay.coupon.bean;
+package com.handpay.coupon.base;
 
 import com.handpay.coupon.R;
 

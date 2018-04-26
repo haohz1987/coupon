@@ -12,16 +12,20 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.READ_LOGS"
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".CpApp"
         android:allowBackup="true"
@@ -33,8 +37,8 @@
             android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
         <activity
@@ -64,7 +68,7 @@
             android:process=":remote" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="6sCUo8QAOVm3IDi7pgrM70NjGEHWGKeW"/>
+            android:value="6sCUo8QAOVm3IDi7pgrM70NjGEHWGKeW" />
 
         <activity
             android:name=".ui.activity.WebActivity"
@@ -73,24 +77,34 @@
         <activity
             android:name=".ui.activity.BranchInfo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.CouponInfo"
+        <activity
+            android:name=".ui.activity.CouponInfo"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.BusinessInfo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.MapActivity"
+        <activity
+            android:name=".ui.activity.MapActivity"
             android:screenOrientation="portrait" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name=".ui.activity.LockActivity"
+        <activity
+            android:name=".ui.activity.LockActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.FlowTagActivity"
+        <activity
+            android:name=".ui.activity.FlowTagActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CouponFunction"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CouponDetail"
             android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />

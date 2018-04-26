@@ -37,25 +37,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/giv"
+                    android:paddingBottom="@dimen/dp_4"
+                    android:paddingTop="@dimen/dp_4"
                     android:text="@string/upload_tip"
                     android:textColor="@color/grey_color"
-                    android:paddingTop="@dimen/dp_4"
-                    android:paddingBottom="@dimen/dp_4"
-                    android:textSize="@dimen/sp_14"
-                    />
+                    android:textSize="@dimen/sp_14" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_business_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_business_name"
@@ -65,24 +59,39 @@
                 <EditText
                     android:id="@+id/et_business_name"
                     style="@style/edit_text_style"
-                    android:hint="请输入店铺名称" />
+                    android:hint="不应包含地区、店号等信息" />
 
                 <ImageView
                     android:id="@+id/iv_business_name"
                     style="@style/image_view_style" />
+
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
+                android:id="@+id/ll_sid"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_sid"
+                    style="@style/text_style"
+                    android:text="商户id" />
+
+                <EditText
+                    android:id="@+id/et_sid"
+                    style="@style/edit_text_style"
+                    android:hint="选填，请商户自己保证唯一识别性" />
+
+                <ImageView
+                    android:id="@+id/iv_sid"
+                    style="@style/image_view_style" />
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+            <LinearLayout
                 android:id="@+id/ll_branch_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_branch_name"
@@ -92,57 +101,51 @@
                 <EditText
                     android:id="@+id/et_branch_name"
                     style="@style/edit_text_style"
-                    android:hint="请输入分店名称" />
+                    android:hint="选填，不应包含地区信息、不应与门店名重复" />
 
                 <ImageView
                     android:id="@+id/iv_branch_name"
                     style="@style/image_view_style" />
+                <TextView
+                    android:id="@+id/tv_num_branch_name"
+                    style="@style/NumTextStyle"
+                    android:text="0/12" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_pcb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_pcb"
                     style="@style/text_style"
                     android:text="地区" />
+
                 <TextView
                     android:id="@+id/tv_address_select"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/dp_4"
+                    android:layout_weight="1"
                     android:text="请选择省市区地址"
-                    android:textSize="@dimen/sp_16"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/sp_16" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/address_selector"/>
+                    android:background="@drawable/address_selector" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -152,24 +155,18 @@
                 <EditText
                     android:id="@+id/et_address"
                     style="@style/edit_text_style"
-                    android:hint="请输入详细地址，不含省市信息" />
+                    android:hint="门店所在的详细街道地址（不要填写省市信息）" />
 
                 <ImageView
                     android:id="@+id/iv_address"
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_telephone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_telephone"
@@ -187,17 +184,11 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_categories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_categories_tip"
@@ -208,65 +199,56 @@
                     android:id="@+id/tv_categories"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/dp_4"
+                    android:layout_weight="1"
                     android:text="请选择门店类型"
-                    android:textSize="@dimen/sp_16"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/sp_16" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/multi_selector"/>
+                    android:background="@drawable/multi_selector" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_md_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/LinearLayoutStyle"
                 android:clickable="true"
-                android:focusable="true"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                android:focusable="true">
 
                 <TextView
                     android:id="@+id/tv_md_address"
                     style="@style/text_style"
                     android:text="定位地址" />
+
                 <TextView
                     android:id="@+id/tv_location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/dp_4"
+                    android:layout_weight="1"
                     android:text="经纬度地址,默认为当前位置"
-                    android:textSize="@dimen/sp_16"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/sp_16" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/titlebar_local"/>
+                    android:background="@drawable/titlebar_local" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_recommend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_recommend"
@@ -283,17 +265,11 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_special"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_special"
@@ -310,17 +286,11 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_introduction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_introduction"
@@ -337,17 +307,11 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_open_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_open_time"
@@ -364,17 +328,11 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
 
             <LinearLayout
                 android:id="@+id/ll_avg_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_45"
-                android:orientation="horizontal">
+                style="@style/LinearLayoutStyle">
 
                 <TextView
                     android:id="@+id/tv_avg_price"
@@ -391,10 +349,8 @@
                     style="@style/image_view_style" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/grey_color" />
+            <View style="@style/ViewLineStyle" />
+
             <TextView
                 android:id="@+id/tv_input_tip"
                 android:layout_width="match_parent"
@@ -402,8 +358,7 @@
                 android:layout_marginTop="@dimen/dp_4"
                 android:text="@string/input_tip"
                 android:textColor="@color/grey_color"
-                android:textSize="@dimen/sp_14"
-                />
+                android:textSize="@dimen/sp_14" />
 
             <Button
                 android:id="@+id/btn_upload"
